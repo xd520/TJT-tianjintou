@@ -207,7 +207,18 @@
              AppDelegate *delate = (AppDelegate *)[UIApplication sharedApplication].delegate;
             delate.dictionary = dataArray;
             
-             [self.navigationController popViewControllerAnimated:YES];
+            
+            DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
+            
+            
+            MainViewController *controller = [[MainViewController alloc] init];
+            //controller.title = [NSString stringWithFormat:@"Cell %li", indexPath.row];
+            // UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
+            
+            [menuController setRootController:controller animated:YES];
+            
+            
+            // [self.navigationController popViewControllerAnimated:YES];
         }
     }
     [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -431,7 +442,12 @@
     }
 
     */
+    
+    //[self dismissViewControllerAnimated:YES completion:nil];
+    
     DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
+    
+    
     MainViewController *controller = [[MainViewController alloc] init];
     //controller.title = [NSString stringWithFormat:@"Cell %li", indexPath.row];
     // UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];

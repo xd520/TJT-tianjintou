@@ -161,6 +161,11 @@
     [self.segmentedControl setIndexChangeBlock:^(NSInteger index) {
         [weakSelf.scrollView scrollRectToVisible:CGRectMake(ScreenWidth * index, 0, ScreenWidth,  ScreenHeight - 114) animated:YES];
         if (index == 1) {
+            
+            if (dataList.count > 0) {
+                [dataList removeAllObjects];
+            }
+            
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hud.dimBackground = YES;
             hud.delegate = self;
@@ -168,6 +173,7 @@
             hud.labelText = @"加载中...";
             dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
                 //[self requestCategoryList:start limit:limit tag:kBusinessTagGetJRwdtzloadData];
+                start = @"1";
                 //投资专区
                 [self requestList:start limit:limit sortName:sortName val:sortVal tag:kBusinessTagGetJRwdtzloadData];
                 
@@ -181,6 +187,11 @@
             });
             
         } else if (index == 2) {
+            
+            if (dataListPast.count > 0) {
+                [dataListPast removeAllObjects];
+            }
+            
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hud.dimBackground = YES;
             hud.delegate = self;
@@ -190,7 +201,7 @@
                 //[self requestCategoryList:start limit:limit tag:kBusinessTagGetJRwdtzloadData];
                 //投资专区
                 //[self requestList:start limit:limit sortName:sortName val:sortVal tag:kBusinessTagGetJRwdtzloadData];
-                
+                startPast = @"1";
                 //转让专区
                  [self requestTransferList:startPast limit:limitPast sortName:sortNamePast val:sortValPast tag:kBusinessTagGetJRcpzrwytz1];
                 
@@ -1826,7 +1837,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 - (IBAction)callPhone:(UITouch *)sender
 {
     UIView *view = [sender view];
-     UINavigationController *menuController = (UINavigationController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
+    
     
     
     if (view.tag == 3) {
@@ -1835,35 +1846,42 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         if (delegate.logingUser.count > 0) {
             if ([[delegate.logingUser objectForKey:@"success"] boolValue] == YES) {
                 MessgeCenterViewController *cv = [[MessgeCenterViewController alloc] init];
-                cv.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:cv animated:YES];
+                cv.modalTransitionStyle = UIModalTransitionStyle;
+                
+                [self presentViewController:cv animated:YES completion:nil];
+
             } else {
                 // delegate.strlogin = @"2";
-                LoginViewController *VC = [[LoginViewController alloc] init];
-                VC.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:VC animated:YES];
+               // LoginViewController *VC = [[LoginViewController alloc] init];
+               // VC.modalTransitionStyle = UIModalTransitionStyle;
                 
+               // [self presentViewController:VC animated:YES completion:nil];
+
+              [self.view makeToast:@"您还没登录，请先登录" duration:1 position:@"center"];
                 
             }
             
         } else {
             // delegate.strlogin = @"2";
-            LoginViewController *VC = [[LoginViewController alloc] init];
+          //  LoginViewController *VC = [[LoginViewController alloc] init];
             
-            VC.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:VC animated:YES];
+           // VC.modalTransitionStyle = UIModalTransitionStyle;
             
+           // [self presentViewController:VC animated:YES completion:nil];
+            [self.view makeToast:@"您还没登录，请先登录" duration:1 position:@"center"];
             
         }
         
     } else if (view.tag == 4) {
         UserBackViewController *cv = [[UserBackViewController alloc] init];
-        cv.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:cv animated:YES];
+        cv.modalTransitionStyle = UIModalTransitionStyle;
+        
+        [self presentViewController:cv animated:YES completion:nil];
     } else if (view.tag == 5) {
         MyUserMangerViewController *cv = [[MyUserMangerViewController alloc] init];
-        cv.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:cv animated:YES];
+        cv.modalTransitionStyle = UIModalTransitionStyle;
+        
+        [self presentViewController:cv animated:YES completion:nil];
     } else {
         
         DetailViewController *cv = [[DetailViewController alloc] init];
@@ -2271,6 +2289,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         NSInteger page = _scrollView.contentOffset.x / pageWidth ;
         
         if (page == 1) {
+            
+            if (dataList.count > 0) {
+                [dataList removeAllObjects];
+            }
+            
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hud.dimBackground = YES;
             hud.delegate = self;
@@ -2278,6 +2301,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             hud.labelText = @"加载中...";
             dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
                 //[self requestCategoryList:start limit:limit tag:kBusinessTagGetJRwdtzloadData];
+                 start = @"1";
                 //投资专区
                 [self requestList:start limit:limit sortName:sortName val:sortVal tag:kBusinessTagGetJRwdtzloadData];
                 
@@ -2293,6 +2317,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             
 
         } else if (page == 2) {
+            
+            if (dataListPast.count > 0) {
+                [dataListPast removeAllObjects];
+            }
+            
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hud.dimBackground = YES;
             hud.delegate = self;
@@ -2302,7 +2331,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
                 //[self requestCategoryList:start limit:limit tag:kBusinessTagGetJRwdtzloadData];
                 //投资专区
                // [self requestList:start limit:limit sortName:sortName val:sortVal tag:kBusinessTagGetJRwdtzloadData];
-                
+                startPast = @"1";
                 //转让专区
                 [self requestTransferList:startPast limit:limitPast sortName:sortNamePast val:sortValPast tag:kBusinessTagGetJRcpzrwytz1];
                 
