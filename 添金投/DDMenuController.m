@@ -27,7 +27,7 @@
 #import "DDMenuController.h"
 
 #define kMenuFullWidth [[UIScreen mainScreen] bounds].size.width
-#define kMenuDisplayedWidth 280.0f
+#define kMenuDisplayedWidth 260
 #define kMenuOverlayWidth (self.view.bounds.size.width - kMenuDisplayedWidth)
 #define kMenuBounceOffset 10.0f
 #define kMenuBounceDuration .3f
@@ -345,16 +345,19 @@
 
     // Check for horizontal pan gesture
     if (gestureRecognizer == _pan) {
-
+        /*
         UIPanGestureRecognizer *panGesture = (UIPanGestureRecognizer*)gestureRecognizer;
         CGPoint translation = [panGesture translationInView:self.view];
 
         if ([panGesture velocityInView:self.view].x < 600 && sqrt(translation.x * translation.x) / sqrt(translation.y * translation.y) > 1) {
             return YES;
         } 
-        
+        */
         return NO;
     }
+    
+ 
+    
     
     if (gestureRecognizer == _tap) {
         
@@ -493,7 +496,7 @@
     [self.leftViewController viewWillAppear:animated];
     
     frame = _root.view.frame;
-    frame.origin.x = CGRectGetMaxX(view.frame) - (kMenuFullWidth - kMenuDisplayedWidth);
+    frame.origin.x = CGRectGetMaxX(view.frame) - (kMenuFullWidth - kMenuFullWidth + 60);
     
     BOOL _enabled = [UIView areAnimationsEnabled];
     if (!animated) {

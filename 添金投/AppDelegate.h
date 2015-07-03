@@ -24,8 +24,6 @@
 #define NUMBERS @"0123456789\n"
 //#define SERVERURL @"http://192.168.1.110:8803"
 
-
-
 //天津投
 #define SERVERURL @"http://192.168.1.110:8805"
 

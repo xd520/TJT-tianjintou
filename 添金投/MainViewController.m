@@ -1717,11 +1717,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             }
             [dayview addSubview:radialView];
             
-            UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth - 85, -6, 75 , 25)];
-            img.image = [UIImage imageNamed:@"首页03_03"];
-            [dayview addSubview:img];
-            
-            
             
             
         }
@@ -1785,6 +1780,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         //点击几次，如果是1就是单击
         singleTap.numberOfTapsRequired = 1;
         [dayview addGestureRecognizer:singleTap];
+        
+        
+        UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth - 10 - 85,10 +  90 + 160 -6, 75 , 25)];
+        img.image = [UIImage imageNamed:@"首页03_03"];
+        [backScrollView addSubview:img];
+        
         [backScrollView addSubview:dayview];
         
         
@@ -1825,6 +1826,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 - (IBAction)callPhone:(UITouch *)sender
 {
     UIView *view = [sender view];
+     UINavigationController *menuController = (UINavigationController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
+    
+    
     if (view.tag == 3) {
         
         AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -1868,8 +1872,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         
         cv.title = [[dataListFirst objectAtIndex:view.tag] objectForKey:@"GQMC"];
         cv.strGqdm = [[dataListFirst objectAtIndex:view.tag] objectForKey:@"GQDM"];
-        cv.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:cv animated:YES];
+       // cv.hidesBottomBarWhenPushed = YES;
+      //  [menuController pushViewController:cv animated:YES];
+        
+        cv.modalTransitionStyle = UIModalTransitionStyle;
+       
+        [self presentViewController:cv animated:YES completion:nil];
+        
+        
         
     }
     

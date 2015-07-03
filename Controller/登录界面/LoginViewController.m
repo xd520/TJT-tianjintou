@@ -12,6 +12,7 @@
 #import "FoggterViewController.h"
 #import "MainViewController.h"
 #import "Base64XD.h"
+#import "MainViewController.h"
 
 
 @interface LoginViewController ()
@@ -408,7 +409,7 @@
 }
 
 - (IBAction)quit:(id)sender {
-    
+    /*
         NSMutableArray * array =[[NSMutableArray alloc]initWithArray:self.navigationController.viewControllers];
     //删除最后一个，也就是自己
     
@@ -429,8 +430,13 @@
         
     }
 
+    */
+    DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
+    MainViewController *controller = [[MainViewController alloc] init];
+    //controller.title = [NSString stringWithFormat:@"Cell %li", indexPath.row];
+    // UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
     
-    
+    [menuController setRootController:controller animated:YES];
 }
 
 
