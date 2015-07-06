@@ -329,7 +329,7 @@
     
     [self.view addSubview:table];
  
-    UIButton *setBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, ScreenHeight - 40, (ScreenWidth - 60)/2, 40)];
+    UIButton *setBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, ScreenHeight - 60 + addHight, (ScreenWidth - 60)/2, 40)];
     setBtn.backgroundColor = [UIColor whiteColor];
     UIImageView *setImg = [[UIImageView alloc] initWithFrame:CGRectMake(20, 5, 30, 30)];
     setImg.image = [UIImage imageNamed:@"set"];
@@ -355,7 +355,7 @@
     [self.view addSubview:setBtn];
     
     
-    logBtn = [[UIButton alloc] initWithFrame:CGRectMake((ScreenWidth - 60)/2, ScreenHeight - 40, (ScreenWidth - 60)/2, 40)];
+    logBtn = [[UIButton alloc] initWithFrame:CGRectMake((ScreenWidth - 60)/2, ScreenHeight - 60 + addHight, (ScreenWidth - 60)/2, 40)];
     logBtn.backgroundColor = [UIColor whiteColor];
     logoImg = [[UIImageView alloc] initWithFrame:CGRectMake(20, 5, 30, 30)];
     logoImg.image = [UIImage imageNamed:@"esc"];
