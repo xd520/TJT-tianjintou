@@ -34,6 +34,9 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) DDMenuController *menuController;
+@property (strong, nonatomic) UIView *baseView;
+
+
 
 @property (strong, nonatomic) NSMutableDictionary *dictionary;
 @property (strong, nonatomic) NSMutableDictionary *dic;

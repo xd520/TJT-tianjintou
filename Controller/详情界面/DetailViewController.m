@@ -875,8 +875,8 @@
 
 - (IBAction)back:(id)sender {
     
-   // [self.navigationController popViewControllerAnimated:YES];
-    [self dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
+    //[self dismissModalViewControllerAnimated:YES];
 }
 - (IBAction)hideMethods:(id)sender {
     

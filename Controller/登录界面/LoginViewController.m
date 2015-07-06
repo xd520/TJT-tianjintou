@@ -34,7 +34,19 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+   // UIView *baseView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+    
+    // darkGrayColor;
+    //lightGrayColor;
+   // baseView.backgroundColor = [ColorUtil colorWithHexString:@"eeeeee"];
+    //baseView.backgroundColor = [UIColor lightGrayColor];
+    // self.view = baseView;
+   // [baseView addSubview:self.view];
 }
+
+
+
+
 
 - (void)viewDidLoad
 {
@@ -208,14 +220,7 @@
             delate.dictionary = dataArray;
             
             
-            DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
-            
-            
-            MainViewController *controller = [[MainViewController alloc] init];
-            //controller.title = [NSString stringWithFormat:@"Cell %li", indexPath.row];
-            // UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-            
-            [menuController setRootController:controller animated:YES];
+           [self dismissViewControllerAnimated:YES completion:nil];
             
             
             // [self.navigationController popViewControllerAnimated:YES];
@@ -248,26 +253,52 @@
 
 #pragma mark-文本框代理方法
 
-
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
+    
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    delegate.baseView.hidden = NO;
+   
+    
+    
+    
     CGRect frame = textField.frame;
     int offset = frame.origin.y + 76 - (self.view.frame.size.height - 256.0);//键盘高度216
-//动画
+    //动画
     /*
-    NSTimeInterval animationDuration = 0.3f;
-    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
-    [UIView setAnimationDuration:animationDuration];
-    */
+     NSTimeInterval animationDuration = 0.3f;
+     [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
+     [UIView setAnimationDuration:animationDuration];
+     */
     //将视图的Y坐标向上移动offset个单位，以使下面腾出地方用于软键盘的显示
     if(offset > 0)
         self.view.frame = CGRectMake(0.0f, -offset, self.view.frame.size.width, self.view.frame.size.height);
-       // stutas = YES;
-        //[[UIApplication sharedApplication] setStatusBarHidden:YES];
+    // stutas = YES;
+    //[[UIApplication sharedApplication] setStatusBarHidden:YES];
     // [[UIApplication sharedApplication] setStatusBarHidden:TRUE];
-     //[[UIApplication sharedApplication]setStatusBarHidden:YES animated:YES];
-     [UIView commitAnimations];
+    //[[UIApplication sharedApplication]setStatusBarHidden:YES animated:YES];
+    [UIView commitAnimations];
     
 }
+
+
+
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    //    if (IOS_VERSION_7_OR_ABOVE) {
+    //        self.view.frame =CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height);
+    //    }else{
+    // [[UIApplication sharedApplication] setStatusBarHidden:NO animated:NO];
+     self.view.frame =CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    delegate.baseView.hidden = YES;
+    
+    
+    
+    //    }
+}
+
 
 
 
@@ -277,15 +308,6 @@
 }
 
 
--(void)textFieldDidEndEditing:(UITextField *)textField
-{
-    //    if (IOS_VERSION_7_OR_ABOVE) {
-    //        self.view.frame =CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height);
-    //    }else{
-  // [[UIApplication sharedApplication] setStatusBarHidden:NO animated:NO];
-    self.view.frame =CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    //    }
-}
 
 //获取验证图形
 - (void)requestCategoryList
@@ -335,7 +357,7 @@
 
 #pragma mark - 消除键盘
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)even{
     [self.view endEditing:YES];
 }
 
@@ -343,9 +365,13 @@
 
 
 - (IBAction)push:(id)sender {
-    RegesterViewController *cv = [[RegesterViewController alloc] init];
-    cv.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:cv animated:YES];
+    RegesterViewController *controller = [[RegesterViewController alloc] init];
+   // controller.modalTransitionStyle = UIModalTransitionStyle;
+    
+   // [self presentViewController:controller animated:YES completion:nil];
+    
+    [self.navigationController pushViewController:controller animated:YES];
+    
 }
 
 - (IBAction)loginBtn:(id)sender {
@@ -443,17 +469,9 @@
 
     */
     
-    //[self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
-    DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
-    
-    
-    MainViewController *controller = [[MainViewController alloc] init];
-    //controller.title = [NSString stringWithFormat:@"Cell %li", indexPath.row];
-    // UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-    
-    [menuController setRootController:controller animated:YES];
-}
+   }
 
 
 - (void)animationFinished:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {

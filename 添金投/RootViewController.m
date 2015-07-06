@@ -31,6 +31,7 @@
 #import "RechargeViewController.h"
 #import "AddRechargeViewController.h"
 #import "LoginPassWordViewController.h"
+#import "MoreViewController.h"
 
 
 @interface RootViewController ()
@@ -85,6 +86,28 @@
                 setTextlogo.textColor = [ColorUtil colorWithHexString:@"666666"];
                 logoImg.image = [UIImage imageNamed:@"esc"];
                 titleLab.text = [[delate.logingUser objectForKey:@"object"]objectForKey:@"username"];
+                
+                
+                if (hasMore != 1&& hasMore == 0) {
+                    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                    hud.dimBackground = YES; //加层阴影
+                    hud.mode = MBProgressHUDModeIndeterminate;
+                    hud.labelText = @"加载中...";
+                    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+                        
+                        [self requestLogin:kBusinessTagGetJRMyzc];
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            
+                        });
+                    });
+                    
+                    
+                }
+                
+              
+                
+                
             } else {
                 baseView.hidden = YES;
                 logoinBtn.hidden = NO;
@@ -102,10 +125,12 @@
             setTextlogo.textColor = [ColorUtil colorWithHexString:@"ececec"];
              logoImg.image = [UIImage imageNamed:@"esc02(1)"];
         }
-        if (count == 1) {
-            [self getUIFirst];
+    
+    
+        //if (count == 1) {
+           // [self getUIFirst];
             
-        }
+       // }
         
     }
     
@@ -352,6 +377,15 @@
     
 }
 
+-(void)pushSet:(UIButton *)btn {
+    MoreViewController *cv = [[MoreViewController alloc] init];
+    cv.modalTransitionStyle = UIModalTransitionStyle;
+    
+    [self presentViewController:cv animated:YES completion:nil];
+
+}
+
+
 -(void)getMoneyMethods:(UIButton *)sender {
     
     AppDelegate *deletate =(AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -388,15 +422,25 @@
 
 
 -(void)pushLogoin{
-    DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
-    LoginViewController *controller = [[LoginViewController alloc] init];
-    //controller.title = [NSString stringWithFormat:@"Cell %li", indexPath.row];
-    // UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
+     LoginViewController *controller = [[LoginViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+    nav.delegate = self;
+     nav.modalTransitionStyle = UIModalTransitionStyle;
     
-    [menuController setRootController:controller animated:YES];
+    [self presentViewController:nav animated:YES completion:nil];
+    
+  
+    
+    
 
 }
 
+
+#pragma mark - UINavigationController Delegate Methods
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    navigationController.navigationBarHidden = YES;
+}
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -473,20 +517,30 @@
                 
                 if ([[delegate.dictionary objectForKey:@"isSetCert"] boolValue]) {
                     
-                    DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
+                   
                     MoneyAccountViewController *controller = [[MoneyAccountViewController alloc] init];
-                    //controller.title = [NSString stringWithFormat:@"Cell %li", indexPath.row];
-                    // UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
                     
-                    [menuController setRootController:controller animated:YES];
-                    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+                    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+                    nav.delegate = self;
+                    
+                    
+                    
+                    
+                    nav.modalTransitionStyle = UIModalTransitionStyle;
+                    
+                    [self presentViewController:nav animated:YES completion:nil];
+                   // [tableView deselectRowAtIndexPath:indexPath animated:YES];
                  
                 }else {
-                    DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
+                    
                     LoginPassWordViewController *controller = [[LoginPassWordViewController alloc] init];
                     
-                    [menuController setRootController:controller animated:YES];
-                    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+                    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+                    nav.delegate = self;
+                    
+                    nav.modalTransitionStyle = UIModalTransitionStyle;
+                    
+                    [self presentViewController:nav animated:YES completion:nil];
                 }
 
                 
@@ -494,121 +548,143 @@
                 
                 if ([[delegate.dictionary objectForKey:@"isSetCert"] boolValue]) {
                     
-                    DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
-                    DelegateTodayViewController *controller = [[DelegateTodayViewController alloc] init];
-                    //controller.title = [NSString stringWithFormat:@"Cell %li", indexPath.row];
-                    // UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
                     
-                    [menuController setRootController:controller animated:YES];
-                    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+                    DelegateTodayViewController *controller = [[DelegateTodayViewController alloc] init];
+                    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+                    nav.delegate = self;
+                    nav.modalTransitionStyle = UIModalTransitionStyle;
+                    
+                    [self presentViewController:nav animated:YES completion:nil];
                     
                 }else {
-                    DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
+                    
                     LoginPassWordViewController *controller = [[LoginPassWordViewController alloc] init];
                     
-                    [menuController setRootController:controller animated:YES];
-                    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+                    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+                    nav.delegate = self;
+                    nav.modalTransitionStyle = UIModalTransitionStyle;
+                    
+                    [self presentViewController:nav animated:YES completion:nil];
                 }
                 
             } else if(indexPath.row == 2){
                 
                
                     
-                    DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
+                
                     MyGainViewController *controller = [[MyGainViewController alloc] init];
-                    //controller.title = [NSString stringWithFormat:@"Cell %li", indexPath.row];
-                    // UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-                    
-                    [menuController setRootController:controller animated:YES];
-                    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-                    
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+                nav.delegate = self;
+                nav.modalTransitionStyle = UIModalTransitionStyle;
+                
+                [self presentViewController:nav animated:YES completion:nil];
+                
                
                 
             } else if(indexPath.row == 3){
                 
                 if ([[delegate.dictionary objectForKey:@"isSetCert"] boolValue]) {
                     
-                    DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
+                  
                     MyBuyViewController *controller = [[MyBuyViewController alloc] init];
-                    //controller.title = [NSString stringWithFormat:@"Cell %li", indexPath.row];
-                    // UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
+                    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+                    nav.delegate = self;
+                    nav.modalTransitionStyle = UIModalTransitionStyle;
                     
-                    [menuController setRootController:controller animated:YES];
-                    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+                    [self presentViewController:nav animated:YES completion:nil];
                     
                 }else {
-                    DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
+                   
                     LoginPassWordViewController *controller = [[LoginPassWordViewController alloc] init];
                     
-                    [menuController setRootController:controller animated:YES];
-                    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+                    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+                    nav.delegate = self;
+                    nav.modalTransitionStyle = UIModalTransitionStyle;
+                    
+                    [self presentViewController:nav animated:YES completion:nil];
                 }
                 
             }else if(indexPath.row == 4){
                 
                 if ([[delegate.dictionary objectForKey:@"isSetCert"] boolValue]) {
                     
-                    DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
+                   
                     BussizeDetailViewController *controller = [[BussizeDetailViewController alloc] init];
-                    //controller.title = [NSString stringWithFormat:@"Cell %li", indexPath.row];
-                    // UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
+                    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+                    nav.delegate = self;
+                    nav.modalTransitionStyle = UIModalTransitionStyle;
                     
-                    [menuController setRootController:controller animated:YES];
-                    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+                    [self presentViewController:nav animated:YES completion:nil];
                     
                 }else {
-                    DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
+                   
                     LoginPassWordViewController *controller = [[LoginPassWordViewController alloc] init];
                     
-                    [menuController setRootController:controller animated:YES];
-                    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+                    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+                    nav.delegate = self;
+                    nav.modalTransitionStyle = UIModalTransitionStyle;
+                    
+                    [self presentViewController:nav animated:YES completion:nil];
                 }
                 
             }else if(indexPath.row == 6){
                 
-                DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
+               
                 HideViewController *controller = [[HideViewController alloc] init];
                 
-                [menuController setRootController:controller animated:YES];
-                [tableView deselectRowAtIndexPath:indexPath animated:YES];
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+                nav.delegate = self;
+                nav.modalTransitionStyle = UIModalTransitionStyle;
+                
+                [self presentViewController:nav animated:YES completion:nil];
                 
             }else if(indexPath.row == 5){
                 
                 if ([[delegate.dictionary objectForKey:@"isSetCert"] boolValue]) {
                     
-                    DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
+                   
                     MoneyAccountViewController *controller = [[MoneyAccountViewController alloc] init];
-                    //controller.title = [NSString stringWithFormat:@"Cell %li", indexPath.row];
-                    // UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
+                    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+                    nav.delegate = self;
+                    nav.modalTransitionStyle = UIModalTransitionStyle;
                     
-                    [menuController setRootController:controller animated:YES];
-                    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+                    [self presentViewController:nav animated:YES completion:nil];
                     
                 }else {
-                    DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
+                   
                     LoginPassWordViewController *controller = [[LoginPassWordViewController alloc] init];
                     
-                    [menuController setRootController:controller animated:YES];
-                    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+                    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+                    nav.delegate = self;
+                    nav.modalTransitionStyle = UIModalTransitionStyle;
+                    
+                    [self presentViewController:nav animated:YES completion:nil];
+                   // [tableView deselectRowAtIndexPath:indexPath animated:YES];
                     
                   
                 }
                 
             }else if(indexPath.row == 7){
                 
-                DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
+               
                 MyMoneyViewController *controller = [[MyMoneyViewController alloc] init];
                 
-                [menuController setRootController:controller animated:YES];
-                [tableView deselectRowAtIndexPath:indexPath animated:YES];
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+                nav.delegate = self;
+                nav.modalTransitionStyle = UIModalTransitionStyle;
+                
+                [self presentViewController:nav animated:YES completion:nil];
                 
             }else if(indexPath.row == 8){
                 
-                DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
+               
                 PassWordMangerViewController *controller = [[PassWordMangerViewController alloc] init];
                 
-                [menuController setRootController:controller animated:YES];
-                [tableView deselectRowAtIndexPath:indexPath animated:YES];
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+                nav.delegate = self;
+                nav.modalTransitionStyle = UIModalTransitionStyle;
+                
+                [self presentViewController:nav animated:YES completion:nil];
                 
                 
                 
@@ -616,23 +692,31 @@
 
         } else {
             
-            DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
+           
             LoginViewController *controller = [[LoginViewController alloc] init];
             
-            [menuController setRootController:controller animated:YES];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+            nav.delegate = self;
+            nav.modalTransitionStyle = UIModalTransitionStyle;
+            
+            [self presentViewController:nav animated:YES completion:nil];
         }
         
     } else {
-        DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
+       
         LoginViewController *controller = [[LoginViewController alloc] init];
         
         
-        [menuController setRootController:controller animated:YES];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+        nav.delegate = self;
+        nav.modalTransitionStyle = UIModalTransitionStyle;
+        
+        [self presentViewController:nav animated:YES completion:nil];
         
         
     }
     
-
+ 
     
     
     
@@ -780,7 +864,7 @@
             if ([[jsonDic objectForKey:@"success"] boolValue] == NO) {
                 //数据异常处理
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
-                [self.view makeToast:@"获取数据异常处理"];
+               // [self.view makeToast:@"获取数据异常处理"];
                 //            subing = NO;
             } else {
                 [MBProgressHUD hideHUDForView:self.view animated:YES];

@@ -22,6 +22,7 @@
 #import "MDRadialProgressLabel.h"
 #import "DetailViewController.h"
 #import "TransferDetailsViewController.h"
+#import "RegesterViewController.h"
 
 
 @interface MainViewController ()
@@ -138,7 +139,7 @@
     self.segmentedControl = [[HMSegmentedControl alloc] initWithFrame:CGRectMake(0, 44 + addHight, ScreenWidth, 40)];
     self.segmentedControl.sectionTitles = @[@"首页", @"投资专区",@"转让专区"];
     self.segmentedControl.selectedSegmentIndex = 0;
-    // self.segmentedControl4.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1];
+     self.segmentedControl.backgroundColor = [ColorUtil colorWithHexString:@"ffffff"];
     self.segmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName : [ColorUtil colorWithHexString:@"666666"]};
     self.segmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName : [ColorUtil colorWithHexString:@"e3a325"]};
     
@@ -155,6 +156,7 @@
     
     self.segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleTextWidthStripe;
     self.segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
+   // self.segmentedControl.selectionIndicatorHeight = 2;
     self.segmentedControl.tag = 3;
     
     __weak typeof(self) weakSelf = self;
@@ -462,8 +464,8 @@
     [self.scrollView addSubview:backScrollView];
     
     
-    NSArray *arrName = @[@"我的收藏",@"添金投公告",@"个人注册",@"机构注册"];
-    NSArray *arrImg = @[@"fav",@"gonggao",@"geren",@"jigou"];
+    NSArray *arrName = @[@"免费注册",@"我的收藏",@"添金投公告",@"添金投新闻"];
+    NSArray *arrImg = @[@"geren",@"fav",@"gonggao",@"jigou"];
     for (int i = 0; i < 4; i++) {
         UIView *view = [[UIView alloc] init];
         if (i == 0) {
@@ -1838,17 +1840,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UIView *view = [sender view];
     
-    
-    
     if (view.tag == 3) {
+        RegesterViewController *cv = [[RegesterViewController alloc] init];
+        [self.navigationController pushViewController:cv animated:YES];
+    } else if (view.tag == 4) {
         
         AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         if (delegate.logingUser.count > 0) {
             if ([[delegate.logingUser objectForKey:@"success"] boolValue] == YES) {
                 MessgeCenterViewController *cv = [[MessgeCenterViewController alloc] init];
-                cv.modalTransitionStyle = UIModalTransitionStyle;
-                
-                [self presentViewController:cv animated:YES completion:nil];
+                [self.navigationController pushViewController:cv animated:YES];
 
             } else {
                 // delegate.strlogin = @"2";
@@ -1872,16 +1873,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             
         }
         
-    } else if (view.tag == 4) {
-        UserBackViewController *cv = [[UserBackViewController alloc] init];
-        cv.modalTransitionStyle = UIModalTransitionStyle;
-        
-        [self presentViewController:cv animated:YES completion:nil];
     } else if (view.tag == 5) {
+        UserBackViewController *cv = [[UserBackViewController alloc] init];
+        [self.navigationController pushViewController:cv animated:YES];
+    } else if (view.tag == 6) {
         MyUserMangerViewController *cv = [[MyUserMangerViewController alloc] init];
-        cv.modalTransitionStyle = UIModalTransitionStyle;
+       // cv.modalTransitionStyle = UIModalTransitionStyle;
         
-        [self presentViewController:cv animated:YES completion:nil];
+       // [self presentViewController:cv animated:YES completion:nil];
+       [self.navigationController pushViewController:cv animated:YES];
+        
     } else {
         
         DetailViewController *cv = [[DetailViewController alloc] init];
@@ -1893,10 +1894,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
        // cv.hidesBottomBarWhenPushed = YES;
       //  [menuController pushViewController:cv animated:YES];
         
-        cv.modalTransitionStyle = UIModalTransitionStyle;
+       // cv.modalTransitionStyle = UIModalTransitionStyle;
        
-        [self presentViewController:cv animated:YES completion:nil];
-        
+       // [self presentViewController:cv animated:YES completion:nil];
+        [self.navigationController pushViewController:cv animated:YES]; 
         
         
     }

@@ -17,6 +17,7 @@
 @end
 
 @interface MoreViewController : UIViewController
+- (IBAction)back:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITableView *table;
 @property (weak,nonatomic) id<LogOutVCDelegate> delegate;

@@ -136,7 +136,7 @@
     
     self.selectedSegmentIndex = 0;
     self.segmentEdgeInset = UIEdgeInsetsMake(0, 5, 0, 5);
-    self.selectionIndicatorHeight = 5.0f;
+    self.selectionIndicatorHeight = 2.0f;
     self.selectionIndicatorEdgeInsets = UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f);
     self.selectionStyle = HMSegmentedControlSelectionStyleTextWidthStripe;
     self.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationUp;
@@ -145,7 +145,7 @@
     self.touchEnabled = YES;
     self.verticalDividerEnabled = NO;
     self.type = HMSegmentedControlTypeText;
-    self.verticalDividerWidth = 1.0f;
+    //self.verticalDividerWidth = 10.0f;
     _verticalDividerColor = [UIColor blackColor];
     self.borderColor = [UIColor blackColor];
     self.borderWidth = 1.0f;
@@ -303,10 +303,12 @@
             }
             
             // Fix rect position/size to avoid blurry labels
-            rect = CGRectMake(ceilf(rect.origin.x), ceilf(rect.origin.y), ceilf(rect.size.width), ceilf(rect.size.height));
+            rect = CGRectMake(ceilf(rect.origin.x), ceilf(rect.origin.y) + 3, ceilf(rect.size.width), ceilf(rect.size.height));
             
             CATextLayer *titleLayer = [CATextLayer layer];
             titleLayer.frame = rect;
+            
+            
             titleLayer.alignmentMode = kCAAlignmentCenter;
             titleLayer.truncationMode = kCATruncationEnd;
             titleLayer.string = [self attributedTitleAtIndex:idx];

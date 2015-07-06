@@ -30,9 +30,9 @@
     //self.window.backgroundColor = [ColorUtil colorWithHexString:@"eeeeee"];
     MainViewController *mainController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
     
-    //UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:mainController];
-    
-   _menuController = [[DDMenuController alloc] initWithRootViewController:mainController];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:mainController];
+    navController.delegate = self;
+   _menuController = [[DDMenuController alloc] initWithRootViewController:navController];
     
     _menuController.delegate = self;
   
@@ -40,15 +40,35 @@
     
     RootViewController *rootVC = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
     rootVC.view.backgroundColor = [UIColor lightGrayColor];
+   // UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootVC];
+   // navController.delegate = self;
+    
+    
      _menuController.leftViewController = rootVC;
         
-    self.window.rootViewController =  _menuController;
+   // self.window.rootViewController =  _menuController;
+    [self.window addSubview:_menuController.view];
     
+    _baseView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+    _baseView.backgroundColor = [UIColor whiteColor];
+    _baseView.hidden = YES;
+    [self.window addSubview: _baseView];
      
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+
+#pragma mark - UINavigationController Delegate Methods
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+   navigationController.navigationBarHidden = YES;
+}
+
+
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
