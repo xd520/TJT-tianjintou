@@ -52,7 +52,7 @@
     _baseView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
     _baseView.backgroundColor = [UIColor whiteColor];
     _baseView.hidden = YES;
-    [self.window addSubview: _baseView];
+   // [self.window addSubview: _baseView];
      
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

@@ -88,22 +88,10 @@
                 titleLab.text = [[delate.logingUser objectForKey:@"object"]objectForKey:@"username"];
                 
                 
-                if (hasMore != 1&& hasMore == 0) {
-                    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-                    hud.dimBackground = YES; //加层阴影
-                    hud.mode = MBProgressHUDModeIndeterminate;
-                    hud.labelText = @"加载中...";
-                    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-                        
-                        [self requestLogin:kBusinessTagGetJRMyzc];
-                        
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            
-                        });
-                    });
+               // if (hasMore != 1&& hasMore == 0) {
+                
                     
-                    
-                }
+              //  }
                 
               
                 
@@ -135,9 +123,13 @@
     }
     
     
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     
-    
-    
+    [self getUIFirst];
+}
+
+
 
 
 -(void)getUIFirst {
@@ -145,7 +137,7 @@
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     if (delegate.logingUser.count > 0) {
         if ([[delegate.logingUser objectForKey:@"success"] boolValue] == YES) {
-            if (hasMore != 1&& hasMore == 0) {
+           
                 MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
                 hud.dimBackground = YES; //加层阴影
                 hud.mode = MBProgressHUDModeIndeterminate;
@@ -161,27 +153,8 @@
                 
                 
             }
-        } else {
-            
-            DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
-            LoginViewController *controller = [[LoginViewController alloc] init];
-            
-            [menuController setRootController:controller animated:YES];
-        }
-        
-    } else {
-        DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
-        LoginViewController *controller = [[LoginViewController alloc] init];
-       
-        
-        [menuController setRootController:controller animated:YES];
-        
-        
     }
-    
-    
 }
-
 
 
 
@@ -378,10 +351,15 @@
 }
 
 -(void)pushSet:(UIButton *)btn {
-    MoreViewController *cv = [[MoreViewController alloc] init];
-    cv.modalTransitionStyle = UIModalTransitionStyle;
     
-    [self presentViewController:cv animated:YES completion:nil];
+    
+    
+    
+    MoreViewController *cv = [[MoreViewController alloc] init];
+     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:cv];
+    nav.modalTransitionStyle = UIModalTransitionStyle;
+    
+    [self presentViewController:nav animated:YES completion:nil];
 
 }
 
@@ -424,6 +402,7 @@
 -(void)pushLogoin{
      LoginViewController *controller = [[LoginViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+    controller.loginStr = @"1";
     nav.delegate = self;
      nav.modalTransitionStyle = UIModalTransitionStyle;
     
@@ -694,7 +673,7 @@
             
            
             LoginViewController *controller = [[LoginViewController alloc] init];
-            
+            controller.loginStr = @"1";
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
             nav.delegate = self;
             nav.modalTransitionStyle = UIModalTransitionStyle;
@@ -705,7 +684,7 @@
     } else {
        
         LoginViewController *controller = [[LoginViewController alloc] init];
-        
+        controller.loginStr = @"1";
         
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
         nav.delegate = self;
@@ -906,9 +885,9 @@
                     
                     vc.dic = dataArray;
                     
-                    
-                    
-                    [self.navigationController pushViewController:vc animated:YES];
+                    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+                    nav.delegate = self;
+                    [self presentViewController:nav animated:YES completion:nil];
                     
                     
                 } else {
@@ -919,9 +898,9 @@
                     
                     vc.dic = dataArray;
                     
-                    
-                    
-                    [self.navigationController pushViewController:vc animated:YES];
+                    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+                    nav.delegate = self;
+                    [self presentViewController:nav animated:YES completion:nil];
                     
                 }
                 
@@ -971,8 +950,9 @@
                     vc.dic = dataArray;
                     
                     
-                    
-                    [self.navigationController pushViewController:vc animated:YES];
+                    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+                    nav.delegate = self;
+                    [self presentViewController:nav animated:YES completion:nil];
                     
                     
                     
@@ -986,10 +966,10 @@
                     
                     vc.dic = dataArray;
                     
-                    
-                    
-                    [self.navigationController pushViewController:vc animated:YES];
-                    
+                     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+                    nav.delegate = self;
+                    //[self.navigationController pushViewController:vc animated:YES];
+                     [self presentViewController:nav animated:YES completion:nil];
                 }
                 
             }

@@ -25,8 +25,8 @@
     float addHight;
     UILabel * _longtime1;
     NSString *timeStr;
-    int day;
-    int timeAll;
+    NSInteger day;
+    NSInteger timeAll;
 }
 @end
 
@@ -188,6 +188,13 @@
     radialView.theme.sliceDividerHidden = YES;
     int kt;
     
+    if ([_flagStr isEqualToString:@"false"]) {
+        kt = 100;
+        radialView.progressCounter = 100;
+    } else {
+    
+    
+    
     if ([[dataArr objectForKey:@"mjsjflag"] isEqualToString:@"1"]) {
         kt = 100;
          radialView.progressCounter = 100;
@@ -205,7 +212,7 @@
         }
         
     }
-
+}
     
     
     radialView.theme.sliceDividerHidden = YES;
@@ -280,7 +287,11 @@
     remindLab.font = [UIFont systemFontOfSize:14];
     [firstVeiw addSubview:remindLab];
     
-     timeAll = [[dataArr objectForKey:@"DQSJ"] intValue] - [[dataArr objectForKey:@"nowDate"] intValue];
+    
+    NSLog(@"dqsj = %ld  nowDate = %ld  last == %ld ",[[dataArr objectForKey:@"DQSJ"] integerValue],[[dataArr objectForKey:@"nowDate"] integerValue],[[dataArr objectForKey:@"DQSJ"] integerValue] - [[dataArr objectForKey:@"nowDate"] integerValue]);
+    
+    
+     timeAll = ([[dataArr objectForKey:@"DQSJ"] integerValue] - [[dataArr objectForKey:@"nowDate"] integerValue]);
     
     _longtime1 = [[UILabel alloc] init];
     _longtime1.font = [UIFont boldSystemFontOfSize:14];
@@ -288,6 +299,10 @@
     _longtime1.textAlignment = NSTextAlignmentLeft;
     
     _longtime1.frame = CGRectMake(10,descHeight + 155, ScreenWidth/2 - 10, 14);
+    
+     if ([_flagStr isEqualToString:@"false"]) {
+     _longtime1.text = @"募集结束";
+     }else {
     if ([[dataArr objectForKey:@"mjsjflag"] isEqualToString:@"-1"]) {
         timeStr = [dataArr objectForKey:@"FID_DQRQ"];
         [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFireMethod1:) userInfo:nil repeats:YES];
@@ -295,7 +310,7 @@
     
     _longtime1.text = @"募集结束";
     }
-    
+}
     [firstVeiw addSubview:_longtime1];
     
     
@@ -412,7 +427,10 @@
     sureBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15];
     [sureBtn addTarget:self action:@selector(changeUI:) forControlEvents:UIControlEventTouchUpInside];
     
-    // if (self.flagbtn) {
+    if ([_flagStr isEqualToString:@"false"]) {
+        sureBtn.enabled = NO;
+        sureBtn.backgroundColor = [UIColor grayColor];
+    }else {
     if ([[dataArr objectForKey:@"mjsjflag"] isEqualToString:@"1"]) {
         [sureBtn setTitle:@"已抢光" forState:UIControlStateNormal];
         sureBtn.enabled = NO;
@@ -429,7 +447,7 @@
         }
         
     }
-    
+}
     [scrollView addSubview:sureBtn];
 //起投金额
     UILabel *labStarLab = [[UILabel alloc] initWithFrame:CGRectMake(10, 55 + descHeight + 270, 13*4, 13)];
@@ -570,20 +588,20 @@
     timeAll = timeAll - 1000;
    
     //day
-    int dayCount = timeAll%(3600*24*1000);
+    NSInteger dayCount = timeAll%(3600*24*1000);
     day = (timeAll - dayCount)/(3600*24*1000);
     
     //hour
-    int hourCount = dayCount%3600000;
-    int hour = (dayCount - hourCount)/3600000;
+    NSInteger hourCount = dayCount%3600000;
+    NSInteger hour = (dayCount - hourCount)/3600000;
     //min
-    int minCount = hourCount%60000;
-    int min = (hourCount - minCount)/60000;
+    NSInteger minCount = hourCount%60000;
+    NSInteger min = (hourCount - minCount)/60000;
     
-    int miaoCount = minCount%1000;
-    int miao = (minCount - miaoCount)/1000;
+    NSInteger miaoCount = minCount%1000;
+    NSInteger miao = (minCount - miaoCount)/1000;
     
-     _longtime1.text = [NSString stringWithFormat:@"%d天%d小时%d分钟%d秒",day, hour, min,miao];
+     _longtime1.text = [NSString stringWithFormat:@"%ld天%ld小时%ld分钟%ld秒",day, hour, min,miao];
     
     
 }

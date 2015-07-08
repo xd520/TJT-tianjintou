@@ -17,6 +17,10 @@
 
 #import "AppDelegate.h"
 @interface LoginViewController : UIViewController<NetworkModuleDelegate,MBProgressHUDDelegate>
+
+
+@property (strong, nonatomic)NSString *loginStr;
+
 @property (weak, nonatomic) IBOutlet UITextField *code;
 
 @property (weak, nonatomic) IBOutlet UITextField *userName;

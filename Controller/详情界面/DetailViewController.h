@@ -12,6 +12,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) NSString *strGqdm;
 @property (assign, nonatomic) BOOL flagbtn;
+@property (strong, nonatomic) NSString *flagStr;
+
 - (IBAction)back:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *hideBtn;
 - (IBAction)hideMethods:(id)sender;

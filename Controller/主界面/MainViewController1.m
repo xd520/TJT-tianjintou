@@ -131,7 +131,7 @@
     [self.view addSubview:backScrollView];
     
     
-    NSArray *arrName = @[@"我的收藏",@"厦金所公告",@"厦金所新闻"];
+    NSArray *arrName = @[@"我的收藏",@"添金投公告",@"添金投新闻"];
     NSArray *arrImg = @[@"xing",@"public_img",@"news_img"];
     for (int i = 0; i < 3; i++) {
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0,  320*_autoSizeScaleY + 115/3*i*_autoSizeScaleY + 20, ScreenWidth, 115/3*_autoSizeScaleY)];

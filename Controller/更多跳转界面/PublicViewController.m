@@ -95,7 +95,7 @@
         addHight = 0;
     }
     
-    NSArray *segmentedArray = [[NSArray alloc]initWithObjects:@"厦金所公告",@"厦金所新闻",nil];
+    NSArray *segmentedArray = [[NSArray alloc]initWithObjects:@"添金投公告",@"添金投新闻",nil];
     segmented = [[UISegmentedControl alloc]initWithItems:segmentedArray];
     
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithPatternImage:[UIImage imageNamed:@"title_bg"]],UITextAttributeTextColor,  [UIFont systemFontOfSize:16],UITextAttributeFont ,[UIColor colorWithPatternImage:[UIImage imageNamed:@"title_bg"]],UITextAttributeTextShadowColor ,nil];

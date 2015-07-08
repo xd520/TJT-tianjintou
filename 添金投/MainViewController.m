@@ -1853,23 +1853,23 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
             } else {
                 // delegate.strlogin = @"2";
-               // LoginViewController *VC = [[LoginViewController alloc] init];
+                LoginViewController *VC = [[LoginViewController alloc] init];
                // VC.modalTransitionStyle = UIModalTransitionStyle;
                 
-               // [self presentViewController:VC animated:YES completion:nil];
+               [self.navigationController pushViewController:VC animated:YES];
 
-              [self.view makeToast:@"您还没登录，请先登录" duration:1 position:@"center"];
+             // [self.view makeToast:@"您还没登录，请先登录" duration:1 position:@"center"];
                 
             }
             
         } else {
             // delegate.strlogin = @"2";
-          //  LoginViewController *VC = [[LoginViewController alloc] init];
+            LoginViewController *VC = [[LoginViewController alloc] init];
             
            // VC.modalTransitionStyle = UIModalTransitionStyle;
             
-           // [self presentViewController:VC animated:YES completion:nil];
-            [self.view makeToast:@"您还没登录，请先登录" duration:1 position:@"center"];
+          [self.navigationController pushViewController:VC animated:YES];
+           // [self.view makeToast:@"您还没登录，请先登录" duration:1 position:@"center"];
             
         }
         
@@ -1886,8 +1886,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     } else {
         
         DetailViewController *cv = [[DetailViewController alloc] init];
-        cv.flagbtn = NO;
         
+        
+        cv.flagStr = [[dataListFirst objectAtIndex:view.tag] objectForKey:@"flag"];
         
         cv.title = [[dataListFirst objectAtIndex:view.tag] objectForKey:@"GQMC"];
         cv.strGqdm = [[dataListFirst objectAtIndex:view.tag] objectForKey:@"GQDM"];

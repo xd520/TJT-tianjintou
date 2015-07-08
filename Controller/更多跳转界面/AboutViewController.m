@@ -50,7 +50,7 @@
     
     _imgView.frame = CGRectMake((ScreenWidth - 80)/2, 20, 80, 80);
     
-    _versonLab.text = @"厦金所:v1.0.0";
+    _versonLab.text = @"添金投:v1.0.0";
     
     
     UILabel *lablast = [[UILabel alloc] initWithFrame:CGRectMake(15, ScreenHeight -25 - 14, ScreenWidth - 30, 13)];

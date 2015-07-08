@@ -220,7 +220,16 @@
             delate.dictionary = dataArray;
             
             
-           [self dismissViewControllerAnimated:YES completion:nil];
+            if ([self.loginStr isEqualToString:@"1"]) {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            } else {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        
+
+            
+            
+         //  [self dismissViewControllerAnimated:YES completion:nil];
             
             
             // [self.navigationController popViewControllerAnimated:YES];
@@ -469,8 +478,11 @@
 
     */
     
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
+    if ([self.loginStr isEqualToString:@"1"]) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
    }
 
 
