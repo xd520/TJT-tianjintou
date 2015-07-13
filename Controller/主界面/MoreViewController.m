@@ -18,6 +18,8 @@
 #import "LoginViewController.h"
 #import "PublicViewController.h"
 #import "LogOutViewController.h"
+#import "MyLabel.h"
+#import "MyView.h"
 
 @interface MoreViewController ()
 {
@@ -59,8 +61,6 @@
     
     [self.navigationController setNavigationBarHidden:YES];
    [_table setScrollEnabled:NO];
-    
-    
     array = @[@"信息公告",@"检查更新",@"关于我们"];
     arrImage = @[[UIImage imageNamed:@"icon_pwd"],[UIImage imageNamed:@"icon_update"],[UIImage imageNamed:@"我的客户经理"]];
     
@@ -68,6 +68,18 @@
     _logoutBtn.backgroundColor = [ColorUtil colorWithHexString:@"fe8103"];
     _logoutBtn.layer.cornerRadius = 4;
     _logoutBtn.layer.masksToBounds = YES;
+    
+    /*
+    MyLabel *lab = [[MyLabel alloc] initWithFrame:CGRectMake(50, 200, 200, 40)];
+    //lab.backgroundColor = [UIColor brownColor];
+    lab.textColor = [UIColor blueColor];
+    lab.text = @"You Are Sb!";
+    [self.view addSubview:lab];
+    
+    MyView *view = [[MyView alloc] initWithFrame:CGRectMake(50, 200, 220, 100)];
+    [self.view addSubview:view];
+    */
+    
     
    }
 

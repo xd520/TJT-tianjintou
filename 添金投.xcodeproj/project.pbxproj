@@ -220,6 +220,8 @@
 		04BB7FEA1B423BD700CE5ACF /* WebDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04BB7F611B423BD700CE5ACF /* WebDetailViewController.xib */; };
 		04BB7FEE1B423C7800CE5ACF /* LPLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB7FED1B423C7800CE5ACF /* LPLabel.m */; };
 		04BB7FF21B423F0900CE5ACF /* DOPDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB7FF11B423F0900CE5ACF /* DOPDropDownMenu.m */; };
+		04C06FC91B4CBB8100DF4ABF /* MyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C06FC81B4CBB8100DF4ABF /* MyLabel.m */; };
+		04C06FCD1B4CC64700DF4ABF /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C06FCC1B4CC64700DF4ABF /* MyView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -589,6 +591,10 @@
 		04BB7FED1B423C7800CE5ACF /* LPLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPLabel.m; sourceTree = "<group>"; };
 		04BB7FF01B423F0900CE5ACF /* DOPDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOPDropDownMenu.h; sourceTree = "<group>"; };
 		04BB7FF11B423F0900CE5ACF /* DOPDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOPDropDownMenu.m; sourceTree = "<group>"; };
+		04C06FC71B4CBB8100DF4ABF /* MyLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLabel.h; sourceTree = "<group>"; };
+		04C06FC81B4CBB8100DF4ABF /* MyLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLabel.m; sourceTree = "<group>"; };
+		04C06FCB1B4CC64700DF4ABF /* MyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView.h; sourceTree = "<group>"; };
+		04C06FCC1B4CC64700DF4ABF /* MyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -945,6 +951,8 @@
 		04BB7E781B42374200CE5ACF /* Modle1 */ = {
 			isa = PBXGroup;
 			children = (
+				04C06FCA1B4CC62700DF4ABF /* MyView */,
+				04C06FC61B4CBB4300DF4ABF /* UILabel */,
 				04BB7E7A1B42376100CE5ACF /* MDradiaProgress */,
 				04BB7E791B42375700CE5ACF /* Child */,
 			);
@@ -1301,6 +1309,24 @@
 			name = DopDropDownMenu;
 			sourceTree = "<group>";
 		};
+		04C06FC61B4CBB4300DF4ABF /* UILabel */ = {
+			isa = PBXGroup;
+			children = (
+				04C06FC71B4CBB8100DF4ABF /* MyLabel.h */,
+				04C06FC81B4CBB8100DF4ABF /* MyLabel.m */,
+			);
+			name = UILabel;
+			sourceTree = "<group>";
+		};
+		04C06FCA1B4CC62700DF4ABF /* MyView */ = {
+			isa = PBXGroup;
+			children = (
+				04C06FCB1B4CC64700DF4ABF /* MyView.h */,
+				04C06FCC1B4CC64700DF4ABF /* MyView.m */,
+			);
+			name = MyView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1549,6 +1575,8 @@
 				0435A3901B411DB000515C77 /* Toast+UIView.m in Sources */,
 				04BB7FAF1B423BD700CE5ACF /* ConfirmViewController.m in Sources */,
 				0435A30F1B411C4A00515C77 /* SDWebImagePrefetcher.m in Sources */,
+				04C06FC91B4CBB8100DF4ABF /* MyLabel.m in Sources */,
+				04C06FCD1B4CC64700DF4ABF /* MyView.m in Sources */,
 				0435A3621B411D4800515C77 /* ASINetworkQueue.m in Sources */,
 				04BB7F8D1B423BD700CE5ACF /* MyTransferDetailViewController.m in Sources */,
 				0435A2A51B40E3B700515C77 /* AppDelegate.m in Sources */,

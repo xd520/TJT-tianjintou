@@ -279,7 +279,13 @@
  */
             
             if ([[dicData objectForKey:@"isSetCert"] boolValue]){
-                [self.view makeToast:@"该功能未实现，请先到PC端操作"];
+               // [self.view makeToast:@"该功能未实现，请先到PC端操作"];
+                BindCardViewController *vc = [[BindCardViewController alloc] init];
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+                
+                
+                
             
             }else {
                 LoginPassWordViewController *vc = [[LoginPassWordViewController alloc] initWithNibName:@"LoginPassWordViewController" bundle:nil];

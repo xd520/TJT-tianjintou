@@ -464,8 +464,8 @@
     [self.scrollView addSubview:backScrollView];
     
     
-    NSArray *arrName = @[@"免费注册",@"我的收藏",@"添金投公告",@"添金投新闻"];
-    NSArray *arrImg = @[@"geren",@"fav",@"gonggao",@"jigou"];
+    NSArray *arrName = @[@"免费注册",@"快速登录",@"添金投公告",@"添金投新闻"];
+    NSArray *arrImg = @[@"geren",@"fav",@"gonggao",@"news"];
     for (int i = 0; i < 4; i++) {
         UIView *view = [[UIView alloc] init];
         if (i == 0) {
@@ -1579,6 +1579,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     dataListFirst = dataArray;
     
+    NSArray *firstName = @[@"新",@"私",@"权"];
+     NSArray *lastName = @[@"手专享四号",@"募债券",@"益产品"];
+    
     for (int i = 0; i < 3; i++) {
         UIView *dayview;
         UILabel *numYQH;
@@ -1599,15 +1602,15 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             //续存期
             nameLab = [[UILabel alloc] initWithFrame:CGRectMake(55, 12, ScreenWidth/2 - 80, 12)];
             
-            UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth/2 - 15 - 50, 59 - 12, 40, 12)];
+            UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 68, 60, 12)];
             dateLabel.text = [NSString stringWithFormat:@"%@天",[[dataListFirst objectAtIndex:i] objectForKey:@"ZRRQ"]];
             dateLabel.font = [UIFont systemFontOfSize:12];
             dateLabel.textColor = [ColorUtil colorWithHexString:@"666666"];
-             dateLabel.textAlignment = NSTextAlignmentRight;
+            // dateLabel.textAlignment = NSTextAlignmentRight;
             [dayview addSubview:dateLabel];
             
-            UILabel *tipdate = [[UILabel alloc] initWithFrame:CGRectMake( 10, 68, ScreenWidth/2 - 25, 12)];
-            tipdate.text = [[dataListFirst objectAtIndex:i] objectForKey:@"FXMS"];
+            UILabel *tipdate = [[UILabel alloc] initWithFrame:CGRectMake(75, 68, ScreenWidth/2 - 15 + 75, 12)];
+            tipdate.text = [NSString stringWithFormat:@"%.2f元",[[[dataListFirst objectAtIndex:i] objectForKey:@"QDJE"] floatValue]];
             tipdate.font = [UIFont systemFontOfSize:12];
             tipdate.textColor = [ColorUtil colorWithHexString:@"666666"];
             // moneyLabel.textAlignment = NSTextAlignmentCenter;
@@ -1632,15 +1635,15 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             nameLab = [[UILabel alloc] initWithFrame:CGRectMake(55, 12, ScreenWidth/2 - 80, 12)];
             //续存期
             
-            UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth/2 - 15 - 50, 59 - 12, 40, 12)];
+            UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 68, 60, 12)];
             dateLabel.text = [NSString stringWithFormat:@"%@天",[[dataListFirst objectAtIndex:i] objectForKey:@"ZRRQ"]];
             dateLabel.font = [UIFont systemFontOfSize:12];
             dateLabel.textColor = [ColorUtil colorWithHexString:@"666666"];
-             dateLabel.textAlignment = NSTextAlignmentRight;
+            // dateLabel.textAlignment = NSTextAlignmentRight;
             [dayview addSubview:dateLabel];
             
-            UILabel *tipdate = [[UILabel alloc] initWithFrame:CGRectMake( 10, 68, ScreenWidth/2 - 25, 12)];
-            tipdate.text = [[dataListFirst objectAtIndex:i] objectForKey:@"FXMS"];
+            UILabel *tipdate = [[UILabel alloc] initWithFrame:CGRectMake(75, 68, ScreenWidth/2 - 15 + 75, 12)];
+            tipdate.text = [NSString stringWithFormat:@"%.2f元",[[[dataListFirst objectAtIndex:i] objectForKey:@"QDJE"] floatValue]];
             tipdate.font = [UIFont systemFontOfSize:12];
             tipdate.textColor = [ColorUtil colorWithHexString:@"666666"];
             // moneyLabel.textAlignment = NSTextAlignmentCenter;
@@ -1677,26 +1680,35 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             // dateLabel.textAlignment = NSTextAlignmentCenter;
             [dayview addSubview:dateLabel];
             
-            UILabel *tipdate = [[UILabel alloc] initWithFrame:CGRectMake( 135, 34, 110, 12)];
-            tipdate.text = [[dataListFirst objectAtIndex:i] objectForKey:@"FXMS"];
+            UILabel *tipdate = [[UILabel alloc] initWithFrame:CGRectMake( 190, 34, ScreenWidth - 30 - 195, 12)];
+            tipdate.text = [NSString stringWithFormat:@"%.2f元",[[[dataListFirst objectAtIndex:i] objectForKey:@"QDJE"] floatValue]];
             tipdate.font = [UIFont systemFontOfSize:12];
             tipdate.textColor = [ColorUtil colorWithHexString:@"666666"];
             // moneyLabel.textAlignment = NSTextAlignmentCenter;
             [dayview addSubview:tipdate];
             
             //赠送
-            UILabel *giveLabel = [[UILabel alloc] initWithFrame:CGRectMake( 95, 51, ScreenWidth - 120, 13)];
-            giveLabel.text = @"赠1万体验金   享7天收益";
+            UILabel *giveLabel = [[UILabel alloc] initWithFrame:CGRectMake( 95, 51, 60, 13)];
+            giveLabel.text = @"投资期限";
             giveLabel.font = [UIFont systemFontOfSize:13];
             giveLabel.textColor = [ColorUtil colorWithHexString:@"666666"];
             // dateLabel.textAlignment = NSTextAlignmentCenter;
             [dayview addSubview:giveLabel];
             
             
+            UILabel *giveLabel1 = [[UILabel alloc] initWithFrame:CGRectMake( 190, 51, 60, 13)];
+            giveLabel1.text = @"认购起点";
+            giveLabel1.font = [UIFont systemFontOfSize:13];
+            giveLabel1.textColor = [ColorUtil colorWithHexString:@"666666"];
+            // dateLabel.textAlignment = NSTextAlignmentCenter;
+            [dayview addSubview:giveLabel1];
             
             
             
             
+            
+            
+            /*
             CGRect frame = CGRectMake(ScreenWidth - 70, 80 - 54, 44, 44);
             MDRadialProgressTheme *newTheme12 = [[MDRadialProgressTheme alloc] init];
             newTheme12.centerColor = [UIColor clearColor];
@@ -1730,18 +1742,22 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             }
             [dayview addSubview:radialView];
             
-            
+           */
             
         }
+       
+        
+        
+        
         UILabel *labF1 = [[UILabel  alloc] initWithFrame:CGRectMake(10, 9, 15, 15)];
         labF1.font = [UIFont boldSystemFontOfSize:15];
-        labF1.text = @"稀";
+        labF1.text = [firstName objectAtIndex:i];
         labF1.textColor = [ColorUtil colorWithHexString:@"ec3908"];
         [dayview addSubview:labF1];
         
-        UILabel *labF2 = [[UILabel  alloc] initWithFrame:CGRectMake(25, 12, 30, 12)];
+        UILabel *labF2 = [[UILabel  alloc] initWithFrame:CGRectMake(25, 12, 80, 12)];
         labF2.font = [UIFont boldSystemFontOfSize:12];
-        labF2.text = @"金保-";
+        labF2.text = [lastName objectAtIndex:i];
         labF2.textColor = [UIColor blackColor];
         [dayview addSubview:labF2];
         
@@ -1761,7 +1777,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         nameLab.text = b;
         nameLab.font = [UIFont systemFontOfSize:12];
         nameLab.textColor = [ColorUtil colorWithHexString:@"333333"];
-        [dayview addSubview:nameLab];
+       // [dayview addSubview:nameLab];
         
         
         // numYQH = [[UILabel alloc] initWithFrame:CGRectMake(10, 35, 65, 25)];
@@ -1848,9 +1864,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         if (delegate.logingUser.count > 0) {
             if ([[delegate.logingUser objectForKey:@"success"] boolValue] == YES) {
-                MessgeCenterViewController *cv = [[MessgeCenterViewController alloc] init];
-                [self.navigationController pushViewController:cv animated:YES];
-
+               // MessgeCenterViewController *cv = [[MessgeCenterViewController alloc] init];
+                //[self.navigationController pushViewController:cv animated:YES];
+                [self.view makeToast:@"您已登录！" duration:1 position:@"center"];
             } else {
                 // delegate.strlogin = @"2";
                 LoginViewController *VC = [[LoginViewController alloc] init];

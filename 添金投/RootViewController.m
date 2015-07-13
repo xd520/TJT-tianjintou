@@ -317,6 +317,23 @@
     setText.font = [UIFont systemFontOfSize:15];
     [setBtn addSubview:setText];
     
+    NSLog(@"leading = %f,leading = %f xHeight = %f,capHeight = %f",setText.font.leading,setText.font.lineHeight,setText.font.xHeight,setText.font.capHeight);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     [setBtn addTarget:self action:@selector(pushSet:) forControlEvents:UIControlEventTouchUpInside];
     
     
