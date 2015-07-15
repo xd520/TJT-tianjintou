@@ -76,7 +76,7 @@
     }
     */
     [_request setShouldAttemptPersistentConnection:YES];
-    [_request setTimeOutSeconds:10];
+    [_request setTimeOutSeconds:5];
     [_request setResponseEncoding:self.enc];
     
 //判定字典dic 是否为空  如果不加判定就默认为GET 请求

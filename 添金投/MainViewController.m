@@ -91,6 +91,13 @@
 
 @implementation MainViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     start = @"1";
@@ -213,6 +220,23 @@
                 });
             });
             
+        
+        } else if (index == 0) {
+            if ([flagHub isEqualToString:@"0"]) {
+                
+                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                // hud.dimBackground = YES; //加层阴影
+                hud.mode = MBProgressHUDModeIndeterminate;
+                hud.labelText = @"加载中...";
+                dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+                    
+                    [self requestLogin:kBusinessTagGetJRhotproject];
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                    });
+                });
+            }
         
         }
         
@@ -529,7 +553,7 @@
     
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.dimBackground = YES; //加层阴影
+   // hud.dimBackground = YES; //加层阴影
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = @"加载中...";
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
@@ -2359,9 +2383,23 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
                 });
             });
             
-            
-
         
+        } else if (page == 0) {
+            if ([flagHub isEqualToString:@"0"]) {
+                
+                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                // hud.dimBackground = YES; //加层阴影
+                hud.mode = MBProgressHUDModeIndeterminate;
+                hud.labelText = @"加载中...";
+                dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+                    
+                    [self requestLogin:kBusinessTagGetJRhotproject];
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                    });
+                });
+            }
         
         
         }
