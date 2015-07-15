@@ -145,6 +145,8 @@
             brandLabel.font = [UIFont boldSystemFontOfSize:15];
             [brandLabel setTextColor:[ColorUtil colorWithHexString:@"646464"]];
             [brandLabel setBackgroundColor:[UIColor clearColor]];
+            
+            /*
             if ([[[dataList objectAtIndex:[indexPath row]] objectForKey:@"FID_YHDM"] isEqualToString:@"JSYH"]) {
                 brandLabel.text = @"建设银行";
                
@@ -155,10 +157,12 @@
             
              brandLabel.text = @"其他银行";
             }
-            
+            */
+             
+            brandLabel.text = [[dataList objectAtIndex:[indexPath row]] objectForKey:@"FID_YHMC"];
             [backView addSubview:brandLabel];
             UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth - 16 - 15, 12, 15, 15)];
-            [iconImageView setImage:[UIImage imageNamed:@"next"]];
+            [iconImageView setImage:[UIImage imageNamed:@"next_icon"]];
             [backView addSubview:iconImageView];
             UIView *subView = [[UIView alloc] initWithFrame:CGRectMake(0, 39, ScreenWidth, 1)];
             [subView setBackgroundColor:[ColorUtil colorWithHexString:@"dcdcdc"]];
@@ -199,7 +203,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         }
     } else {
         
-        [self.delegate reloadTableView:[[dataList objectAtIndex:indexPath.row] objectForKey:@"FID_YHDM"]];
+        [self.delegate reloadTableView:[dataList objectAtIndex:indexPath.row]];
         [self.navigationController popViewControllerAnimated:YES];
     }
   

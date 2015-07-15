@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04101A901B5645AD008DF548 /* ProviousViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04101A8E1B5645AD008DF548 /* ProviousViewController.m */; };
+		04101A911B5645AD008DF548 /* ProviousViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04101A8F1B5645AD008DF548 /* ProviousViewController.xib */; };
 		042A1E241B4130010076D206 /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 042A1E231B4130010076D206 /* HMSegmentedControl.m */; };
 		0435A2A21B40E3B700515C77 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0435A2A11B40E3B700515C77 /* main.m */; };
 		0435A2A51B40E3B700515C77 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0435A2A41B40E3B700515C77 /* AppDelegate.m */; };
@@ -235,6 +237,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04101A8D1B5645AD008DF548 /* ProviousViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviousViewController.h; sourceTree = "<group>"; };
+		04101A8E1B5645AD008DF548 /* ProviousViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviousViewController.m; sourceTree = "<group>"; };
+		04101A8F1B5645AD008DF548 /* ProviousViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProviousViewController.xib; sourceTree = "<group>"; };
 		042A1E221B4130010076D206 /* HMSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSegmentedControl.h; sourceTree = "<group>"; };
 		042A1E231B4130010076D206 /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSegmentedControl.m; sourceTree = "<group>"; };
 		0435A29C1B40E3B700515C77 /* 添金投.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "添金投.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1253,6 +1258,9 @@
 				04BB7F431B423BD700CE5ACF /* CardBindViewController.h */,
 				04BB7F441B423BD700CE5ACF /* CardBindViewController.m */,
 				04BB7F451B423BD700CE5ACF /* CardBindViewController.xib */,
+				04101A8D1B5645AD008DF548 /* ProviousViewController.h */,
+				04101A8E1B5645AD008DF548 /* ProviousViewController.m */,
+				04101A8F1B5645AD008DF548 /* ProviousViewController.xib */,
 				04BB7F461B423BD700CE5ACF /* CityViewController.h */,
 				04BB7F471B423BD700CE5ACF /* CityViewController.m */,
 				04BB7F481B423BD700CE5ACF /* CityViewController.xib */,
@@ -1428,6 +1436,7 @@
 				04BB7FB41B423BD700CE5ACF /* EstimateViewController.xib in Resources */,
 				04BB7F881B423BD700CE5ACF /* MyBuyViewController.xib in Resources */,
 				04BB7FCA1B423BD700CE5ACF /* ConfirmTransferViewController.xib in Resources */,
+				04101A911B5645AD008DF548 /* ProviousViewController.xib in Resources */,
 				04BB7F8C1B423BD700CE5ACF /* MyMoneyViewController.xib in Resources */,
 				04BB7F961B423BD700CE5ACF /* TransferApplicationViewController.xib in Resources */,
 				04BB7FC41B423BD700CE5ACF /* NameRealSuccessViewController.xib in Resources */,
@@ -1592,6 +1601,7 @@
 				04BB7F871B423BD700CE5ACF /* MyBuyViewController.m in Sources */,
 				0435A30D1B411C4A00515C77 /* SDWebImageDownloader.m in Sources */,
 				0435A2D11B40E62F00515C77 /* MainViewController.m in Sources */,
+				04101A901B5645AD008DF548 /* ProviousViewController.m in Sources */,
 				04BB7F951B423BD700CE5ACF /* TransferApplicationViewController.m in Sources */,
 				04BB7F9B1B423BD700CE5ACF /* PublicViewController.m in Sources */,
 				04BB7FD31B423BD700CE5ACF /* AddreesssViewController.m in Sources */,
@@ -1688,7 +1698,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1726,7 +1736,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1738,6 +1748,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -1754,6 +1765,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_STRICT_OBJC_MSGSEND = NO;

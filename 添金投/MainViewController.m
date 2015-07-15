@@ -403,7 +403,7 @@
     
     //添加tableView
     
-    table = [[UITableView alloc] initWithFrame:CGRectMake(ScreenWidth, 40, ScreenWidth,ScreenHeight - 60 - 80)];
+    table = [[UITableView alloc] initWithFrame:CGRectMake(ScreenWidth, 40, ScreenWidth,ScreenHeight - 64 - 80)];
     [table setDelegate:self];
     [table setDataSource:self];
     table.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -429,7 +429,7 @@
     
     //添加tableView
     
-    tablePast = [[UITableView alloc] initWithFrame:CGRectMake(ScreenWidth*2,40, ScreenWidth, ScreenHeight - 60 - 80)];
+    tablePast = [[UITableView alloc] initWithFrame:CGRectMake(ScreenWidth*2,40, ScreenWidth, ScreenHeight - 64 - 80)];
     [tablePast setDelegate:self];
     [tablePast setDataSource:self];
     tablePast.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -465,7 +465,7 @@
     
     
     NSArray *arrName = @[@"免费注册",@"快速登录",@"添金投公告",@"添金投新闻"];
-    NSArray *arrImg = @[@"geren",@"fav",@"gonggao",@"news"];
+    NSArray *arrImg = @[@"geren",@"ksdl",@"gonggao",@"news"];
     for (int i = 0; i < 4; i++) {
         UIView *view = [[UIView alloc] init];
         if (i == 0) {

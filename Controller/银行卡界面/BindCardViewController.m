@@ -20,6 +20,8 @@
     NSString *bankStr;
      UILabel *sheetLab;
     int count;
+    NSDictionary *cityDic;
+    NSDictionary *proviceDic;
 }
 @end
 
@@ -48,27 +50,74 @@
         [self.view addSubview:statusBarView];
     }
     
+    //加间隔线
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(10, 39, ScreenWidth - 10, 1)];
+    lineView.backgroundColor = [ColorUtil colorWithHexString:@"ececec"];
+    [self.chikarenView addSubview:lineView];
+    
+    UIView *lineView1 = [[UIView alloc] initWithFrame:CGRectMake(10, 39, ScreenWidth - 10, 1)];
+    lineView1.backgroundColor = [ColorUtil colorWithHexString:@"ececec"];
+    [self.yinhangView addSubview:lineView1];
+    
+    UIView *lineView2 = [[UIView alloc] initWithFrame:CGRectMake(10, 39, ScreenWidth - 10, 1)];
+    lineView2.backgroundColor = [ColorUtil colorWithHexString:@"ececec"];
+    [self.yinhangkahaoView addSubview:lineView2];
+    
+    
+    UIView *lineView3 = [[UIView alloc] initWithFrame:CGRectMake(10, 39, ScreenWidth - 10, 1)];
+    lineView3.backgroundColor = [ColorUtil colorWithHexString:@"ececec"];
+    [self.shengfenView addSubview:lineView3];
+    
+    
+    UIView *lineView4 = [[UIView alloc] initWithFrame:CGRectMake(0, 39, ScreenWidth, 1)];
+    lineView4.backgroundColor = [ColorUtil colorWithHexString:@"ececec"];
+    [self.diquView addSubview:lineView4];
+    
+    self.proviousLab.text = @"";
     self.userName.text = [self.dic objectForKey:@"KHXM"];
-    self.passID.text = [self.dic objectForKey:@"FID_ZJBH"];
+    //self.passID.text = [self.dic objectForKey:@"FID_ZJBH"];
     
-    _commit.layer.borderColor = [UIColor lightGrayColor].CGColor;
+   // _commit.layer.borderColor = [UIColor lightGrayColor].CGColor;
     
-    _commit.layer.borderWidth = 1;
+   // _commit.layer.borderWidth = 1;
     
     _commit.layer.masksToBounds = YES;
     
-    _commit.layer.cornerRadius = 15;
+    _commit.layer.cornerRadius = 4;
+    _commit.backgroundColor = [ColorUtil colorWithHexString:@"fe8103"];
     
-    [_commit setBackgroundImage:[UIImage imageNamed:@"title_bg"] forState:UIControlStateNormal];
+    //[_commit setBackgroundImage:[ColorUtil colorWithHexString:@"fe0873"] forState:UIControlStateNormal];
     
     _bindCardLab.userInteractionEnabled = YES;
-    UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectBankCardMethods)];
+    UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectBankCardMethods:)];
+    
     //lastView.tag = 0;
     //单点触摸
     singleTap1.numberOfTouchesRequired = 1;
     //点击几次，如果是1就是单击
     singleTap1.numberOfTapsRequired = 1;
     [_bindCardLab addGestureRecognizer:singleTap1];
+    
+    UITapGestureRecognizer *singleTap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectBankCardMethods:)];
+    
+    //lastView.tag = 0;
+    //单点触摸
+    singleTap2.numberOfTouchesRequired = 1;
+    //点击几次，如果是1就是单击
+    singleTap2.numberOfTapsRequired = 1;
+    [self.proviousLab addGestureRecognizer:singleTap2];
+    
+    UITapGestureRecognizer *singleTap3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectBankCardMethods:)];
+    
+    //lastView.tag = 0;
+    //单点触摸
+    singleTap3.numberOfTouchesRequired = 1;
+    //点击几次，如果是1就是单击
+    singleTap3.numberOfTapsRequired = 1;
+    [self.addressLab addGestureRecognizer:singleTap3];
+    
+    
+    
     
     LPLabel *lab = [[LPLabel alloc] initWithFrame:CGRectMake(153, 360, 90, 25)];
     
@@ -79,17 +128,31 @@
     lab.text = @"《充值协议》";
     lab.userInteractionEnabled = YES;
     
-    UITapGestureRecognizer *singleTap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushVCProtocal)];
+   // UITapGestureRecognizer *singleTap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushVCProtocal)];
     
     //单点触摸
-    singleTap2.numberOfTouchesRequired = 1;
+    //singleTap2.numberOfTouchesRequired = 1;
     //点击几次，如果是1就是单击
-    singleTap2.numberOfTapsRequired = 1;
-    [lab addGestureRecognizer:singleTap2];
+    //singleTap2.numberOfTapsRequired = 1;
+   // [lab addGestureRecognizer:singleTap2];
     
    
     
     
+}
+
+
+- (void)reloadCityTableView:(NSDictionary *)_code{
+    
+    self.addressLab.text = [_code objectForKey:@"FID_XZQYMC"];
+    cityDic = _code;
+    
+}
+
+- (void)reloadProviousTableView:(NSDictionary *)_code{
+    self.proviousLab.text = [_code objectForKey:@"FID_XZQYMC"];
+    proviceDic = _code;
+
 }
 
 
@@ -104,18 +167,21 @@
 }
 
 
-- (void)reloadTableView:(NSString *)_code{
-    bankStr = _code;
-    if ([_code isEqualToString:@"JSYH"]) {
-        _bindCardLab.text = @"建设银行";
-        
-    } else if ([_code isEqualToString:@"XYYH"]) {
-        _bindCardLab.text = @"兴业银行";
-        
-    } else {
-        
-        _bindCardLab.text = @"其他银行";
-    }
+- (void)reloadTableView:(NSDictionary *)_code{
+   bankStr = [_code objectForKey:@"FID_YHDM"];
+     _bindCardLab.text = [_code objectForKey:@"FID_YHMC"];
+    
+    
+//    if ([_code isEqualToString:@"JSYH"]) {
+//        _bindCardLab.text = @"建设银行";
+//        
+//    } else if ([_code isEqualToString:@"XYYH"]) {
+//        _bindCardLab.text = @"兴业银行";
+//        
+//    } else {
+//        
+//        _bindCardLab.text = @"其他银行";
+//    }
 
 }
 
@@ -199,27 +265,41 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)selectBankCardMethods{
+-(void)selectBankCardMethods:(UITouch *)sender{
+    
+    UILabel *view = (UILabel *)[sender view];
+    if (view.tag == 0) {
+        
     ClassBankCardViewController *vc = [[ClassBankCardViewController alloc] init];
     vc.delegate = self;
     vc.bindVC = self;
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
-
-
-}
-
-
-- (IBAction)remberBtn:(id)sender {
-    count++;
-    if (count % 2 == 0) {
-        [self.rember setBackgroundImage:[UIImage imageNamed:@"select_1.png"] forState:UIControlStateNormal];
+    }else if ( view.tag == 1) {
+        ProviousViewController *vc = [[ProviousViewController alloc] init];
+        vc.delegate = self;
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    
+    } else if ( view.tag == 2) {
         
-    } else {
+        if ([self.proviousLab.text isEqualToString:@""]) {
+            [self.view makeToast:@"请先选择省份" duration:1 position:@"center"];
+        } else {
         
-        [self.rember setBackgroundImage:[UIImage imageNamed:@"select_0.png"] forState:UIControlStateNormal];
+        
+        CityViewController *vc = [[CityViewController alloc] init];
+        vc.strCode = [proviceDic objectForKey:@"FID_XZQYDM"];
+        vc.strTitle = [proviceDic objectForKey:@"FID_XZQYMC"];
+        vc.delegate = self;
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+        }
     }
+        
 }
+
+
 
 
 - (IBAction)commitBtn:(id)sender {

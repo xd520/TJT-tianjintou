@@ -76,7 +76,7 @@
     hud.labelText = @"加载中...";
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         NSMutableDictionary *paraDic = [[NSMutableDictionary alloc] init];
-        [paraDic setObject:_strCode forKey:@"provinceId"];
+        [paraDic setObject:_strCode forKey:@"province"];
         [[NetworkModule sharedNetworkModule] postBusinessReqWithParamters:paraDic tag:kBusinessTagGetJRCityData owner:self];
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -89,7 +89,7 @@
 - (void)slimeRefreshStartRefresh:(SRRefreshView *)refreshView
 {
     NSMutableDictionary *paraDic = [[NSMutableDictionary alloc] init];
-    [paraDic setObject:_strCode forKey:@"provinceId"];
+    [paraDic setObject:_strCode forKey:@"province"];
     [[NetworkModule sharedNetworkModule] postBusinessReqWithParamters:paraDic tag:kBusinessTagGetJRCityDataAgain owner:self];
 }
 #pragma mark - UIScrollView Delegate Methods
@@ -144,14 +144,14 @@
             UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
             [backView setBackgroundColor:[ColorUtil colorWithHexString:@"fafafa"]];
             //品牌
-            UILabel *brandLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 170, 39)];
+            UILabel *brandLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 170, 39)];
             brandLabel.font = [UIFont boldSystemFontOfSize:15];
             [brandLabel setTextColor:[ColorUtil colorWithHexString:@"646464"]];
             [brandLabel setBackgroundColor:[UIColor clearColor]];
-            brandLabel.text = [[dataList objectAtIndex:[indexPath row]] objectForKey:@"XZQYMC"];
+            brandLabel.text = [[dataList objectAtIndex:[indexPath row]] objectForKey:@"FID_XZQYMC"];
             [backView addSubview:brandLabel];
             UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth - 16 - 15, 12, 15, 15)];
-            [iconImageView setImage:[UIImage imageNamed:@"next"]];
+            [iconImageView setImage:[UIImage imageNamed:@"next_icon"]];
             [backView addSubview:iconImageView];
             UIView *subView = [[UIView alloc] initWithFrame:CGRectMake(0, 39, ScreenWidth, 1)];
             [subView setBackgroundColor:[ColorUtil colorWithHexString:@"dcdcdc"]];
@@ -185,19 +185,15 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             } else {
                 label.text = @"正在加载中...";
                 NSMutableDictionary *paraDic = [[NSMutableDictionary alloc] init];
-                [paraDic setObject:_strCode forKey:@"provinceId"];
+                [paraDic setObject:_strCode forKey:@"province"];
                 [[NetworkModule sharedNetworkModule] postBusinessReqWithParamters:paraDic tag:kBusinessTagGetJRCityData owner:self];
                 [tableView deselectRowAtIndexPath:indexPath animated:YES];
             }
         }
     } else {
        
-       
-       // LoginPassWordViewController *VC = [[LoginPassWordViewController alloc]init];
-        self.loginVC.cityDic = [dataList objectAtIndex:indexPath.row];
-        self.loginVC.address.text = [NSString stringWithFormat:@"%@     %@",[self.loginVC.addressDic objectForKey:@"XZQYMC"],[[dataList objectAtIndex:indexPath.row] objectForKey:@"XZQYMC"]];
-        // self.loginVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController setViewControllers:@[[self.navigationController.viewControllers firstObject], self.loginVC]];
+        [self.delegate reloadCityTableView:[dataList objectAtIndex:indexPath.row]];
+        [self.navigationController popViewControllerAnimated:YES];
       
     }
     

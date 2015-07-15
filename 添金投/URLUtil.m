@@ -319,16 +319,16 @@
             return [NSString stringWithFormat:@"%@%@", SERVERURL, @"/app/zjgl/index/transAccount/applySaveAndOutMoneyIndex"];
             break;
         case 102:
-            return [NSString stringWithFormat:@"%@%@", SERVERURL, @"/app/smrz/loadProvinceData"];
+            return [NSString stringWithFormat:@"%@%@", SERVERURL, @"/app/wdzh/wdyhk/hftx/bindCard/provinceData"];
             break;
         case 103: //63
-            return [NSString stringWithFormat:@"%@%@", SERVERURL, @"/app/smrz/loadProvinceData"];
+            return [NSString stringWithFormat:@"%@%@", SERVERURL, @"/app/wdzh/wdyhk/hftx/bindCard/provinceData"];
             break;
         case 104: //63
-            return [NSString stringWithFormat:@"%@%@", SERVERURL, @"/app/smrz/loadCityData"];
+            return [NSString stringWithFormat:@"%@%@", SERVERURL, @"/app/wdzh/wdyhk/hftx/bindCard/cityData"];
             break;
         case 105: //63
-            return [NSString stringWithFormat:@"%@%@", SERVERURL, @"/app/smrz/loadCityData"];
+            return [NSString stringWithFormat:@"%@%@", SERVERURL, @"/app/wdzh/wdyhk/hftx/bindCard/cityData"];
             break;
         case 106:
             return [NSString stringWithFormat:@"%@%@", SERVERURL, @"/app/smrz/sendVcode"];
@@ -476,6 +476,12 @@
             break;
         case 154:
             return [NSString stringWithFormat:@"%@%@", SERVERURL, @"/app/jrzcjy/wdsy/loadData"];
+            break;
+        case 155:
+            return [NSString stringWithFormat:@"%@%@", SERVERURL, @"/app/wdzh/wdyhk/hftx/bindCard/provinceData"];
+            break;
+        case 156:
+            return [NSString stringWithFormat:@"%@%@", SERVERURL, @"/app/wdzh/wdyhk/hftx/bindCard/cityData"];
             break;
         default:
             break;

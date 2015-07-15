@@ -773,7 +773,8 @@
 
 - (IBAction)back:(id)sender {
     
-    [self.navigationController popViewControllerAnimated:YES];
+   // [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)sheetMethods:(id)sender {
     

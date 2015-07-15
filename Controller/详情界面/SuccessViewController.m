@@ -13,6 +13,7 @@
 #import "HideViewController.h"
 #import "MainViewController.h"
 
+
 @interface SuccessViewController ()
 
 @end
@@ -76,7 +77,7 @@
         [navVC popViewControllerAnimated:NO];
         osTabbarVC.selectedViewController = navVC;
         */
-    } else if ([vc.nibName isEqualToString:@"MyInvestViewController"]){
+    } else if ([vc.nibName isEqualToString:@"MainViewController"]){
     
     //删除最后一个，也就是自己
     [array removeObjectAtIndex:array.count-1];
@@ -84,7 +85,7 @@
     [array removeObjectAtIndex:array.count-1];
     //[array removeObjectAtIndex:array.count-1];
     [self.navigationController setViewControllers:array];
-        AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+      //  AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         /*
         CPVSTabBarViewController *osTabbarVC = delegate.osTabVC;
         UINavigationController *navVC = [osTabbarVC viewControllers][2];
@@ -115,7 +116,7 @@
         
         [self.navigationController setViewControllers:array];
   
-    }  else if ([vc.nibName isEqualToString:@"MyInvestViewController"]) {
+    }  else if ([vc.nibName isEqualToString:@"MainViewController"]) {
         /*
         DetailViewController *vc = [[DetailViewController alloc] init];
         MyInvestViewController *vc1 = [[MyInvestViewController alloc] initWithNibName:@"MyInvestViewController" bundle:nil];

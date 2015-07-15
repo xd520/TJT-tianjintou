@@ -10,11 +10,16 @@
 #import "AppDelegate.h"
 @class LoginPassWordViewController;
 
+@protocol CityViewControllerDelegate
+- (void)reloadCityTableView:(NSDictionary *)_code;
+@end
+
 @interface CityViewController : UIViewController<NetworkModuleDelegate,UITableViewDataSource,UITableViewDelegate,SRRefreshDelegate>
 
 @property (nonatomic,strong)NSString *strCode;
 @property (nonatomic,strong)NSString *strTitle;
-@property (nonatomic,strong)LoginPassWordViewController *loginVC;
+
+@property( assign, nonatomic ) id <CityViewControllerDelegate> delegate;
 
 
 - (IBAction)back:(id)sender;

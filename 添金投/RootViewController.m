@@ -441,7 +441,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 9;
+    return 8;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -452,7 +452,7 @@
         cell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth - 60, 40)];
     
    
-    NSArray *arrTitle = @[@"我的资产",@"当日申请",@"投资记录",@"我的收益",@"转账充值",@"资金变动",@"我的收藏",@"我的添金币",@"账户安全"];
+    NSArray *arrTitle = @[@"我的资产",@"当日申请",@"投资记录",@"我的收益",@"转账充值",@"资金变动",@"我的添金币",@"账户安全"];
     
     NSArray *arrImg = @[@"wdzc",@"drsq",@"tzjl",@"wdsy",@"zzcz",@"zjbd",@"wdsc",@"wdtjb",@"zhaq"];
     
@@ -623,7 +623,7 @@
                     [self presentViewController:nav animated:YES completion:nil];
                 }
                 
-            }else if(indexPath.row == 6){
+            }else if(indexPath.row == 9){
                 
                
                 HideViewController *controller = [[HideViewController alloc] init];
@@ -660,7 +660,7 @@
                   
                 }
                 
-            }else if(indexPath.row == 7){
+            }else if(indexPath.row == 6){
                 
                
                 MyMoneyViewController *controller = [[MyMoneyViewController alloc] init];
@@ -671,7 +671,7 @@
                 
                 [self presentViewController:nav animated:YES completion:nil];
                 
-            }else if(indexPath.row == 8){
+            }else if(indexPath.row == 7){
                 
                
                 PassWordMangerViewController *controller = [[PassWordMangerViewController alloc] init];
@@ -904,6 +904,7 @@
                     
                     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
                     nav.delegate = self;
+                     nav.modalTransitionStyle = UIModalTransitionStyle;
                     [self presentViewController:nav animated:YES completion:nil];
                     
                     
@@ -917,6 +918,7 @@
                     
                     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
                     nav.delegate = self;
+                     nav.modalTransitionStyle = UIModalTransitionStyle;
                     [self presentViewController:nav animated:YES completion:nil];
                     
                 }
@@ -969,6 +971,7 @@
                     
                     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
                     nav.delegate = self;
+                     nav.modalTransitionStyle = UIModalTransitionStyle;
                     [self presentViewController:nav animated:YES completion:nil];
                     
                     
@@ -985,7 +988,7 @@
                     
                      UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
                     nav.delegate = self;
-                    //[self.navigationController pushViewController:vc animated:YES];
+                    nav.modalTransitionStyle = UIModalTransitionStyle;
                      [self presentViewController:nav animated:YES completion:nil];
                 }
                 

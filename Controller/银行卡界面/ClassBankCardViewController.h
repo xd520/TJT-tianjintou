@@ -10,7 +10,7 @@
 #import "AppDelegate.h"
 @class BindCardViewController;
 @protocol ClassBankViewControllerDelegate
-- (void)reloadTableView:(NSString *)_code;
+- (void)reloadTableView:(NSDictionary *)_code;
 @end
 
 @interface ClassBankCardViewController : UIViewController<NetworkModuleDelegate,UITableViewDataSource,UITableViewDelegate,SRRefreshDelegate>

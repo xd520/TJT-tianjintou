@@ -167,6 +167,8 @@ enum kBusinessTag
     kBusinessTagGetJRinfolist1Again = 152,
     kBusinessTagGetJRjrzcjywdsyName = 153,
     kBusinessTagGetJRjrzcjywdsyDate = 154,
+    kBusinessTagGetJRprovinceData = 155,//省份
+    kBusinessTagGetJRcityData = 156,//地区
     
 };
 typedef enum kBusinessTag kBusinessTag;
