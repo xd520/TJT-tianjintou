@@ -76,7 +76,7 @@
     }
     */
     [_request setShouldAttemptPersistentConnection:YES];
-    [_request setTimeOutSeconds:5];
+    [_request setTimeOutSeconds:10];
     [_request setResponseEncoding:self.enc];
     
 //判定字典dic 是否为空  如果不加判定就默认为GET 请求
@@ -110,7 +110,7 @@
     [_request setClientCertificateIdentity:[Https Instance].identify];
    // [_request setValue:finalHost forHTTPHeaderField:@"Host"];
     [_request setShouldAttemptPersistentConnection:NO];
-    [_request setTimeOutSeconds:5];
+    [_request setTimeOutSeconds:10];
     [_request setResponseEncoding:self.enc];
     //判定字典dic 是否为空  如果不加判定就默认为GET 请求
     // 当dic == nil； 的时候是GET请求
@@ -142,7 +142,7 @@
     
     [_request setShouldAttemptPersistentConnection:NO];
     
-    [_request setTimeOutSeconds:5];
+    [_request setTimeOutSeconds:10];
     [_request setResponseEncoding:self.enc];
     NSEnumerator *enumerator = [[dic keyEnumerator] retain];
     for (NSString *key in enumerator) {

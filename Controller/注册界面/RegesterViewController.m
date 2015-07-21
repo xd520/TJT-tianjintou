@@ -140,6 +140,17 @@
     bool sfzNo = [emailTest evaluateWithObject:[textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     
     if (!sfzNo) {
+        
+        if (textField.text.length < 6 || textField.text.length > 18) {
+           [self.view makeToast:@"请输入英文字母开头，6-18位字符" duration:1.0 position:@"center"];
+        } else {
+        
+        [self.view makeToast:@"请输入英文字母开头，6-18位字符" duration:1.0 position:@"center"];
+        
+        }
+        
+        
+        
         //[self HUDShow:@"请输入正确的身份证号" delay:1.5];
         //[self.view makeToast:@"请输入正确的用户名" duration:1.0 position:@"center"];
         textField.text = @"";
@@ -447,6 +458,8 @@
     
     [self.view endEditing:YES];
     if ([self.userName.text isEqualToString:@""]) {
+        [self.view makeToast:@"请输入用户名" duration:2.0 position:@"center"];
+    }else if (self.userName.text.length < 6 || self.userName.text.length > 18) {
         [self.view makeToast:@"请输入用户名" duration:2.0 position:@"center"];
     }  else if ([self.password.text isEqualToString:@""]) {
         [self.view makeToast:@"请输入密码" duration:1.0 position:@"center"];

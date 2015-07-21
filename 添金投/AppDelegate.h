@@ -25,7 +25,12 @@
 //#define SERVERURL @"http://192.168.1.110:8803"
 
 //天津投
-#define SERVERURL @"http://192.168.1.110:8805"
+//#define SERVERURL @"http://192.168.1.110:8805"
+
+//天津投生产环境
+#define SERVERURL @"http://www.tjtou.cn"
+
+
 
 @class DDMenuController;
 @interface AppDelegate : UIResponder <UIApplicationDelegate>{

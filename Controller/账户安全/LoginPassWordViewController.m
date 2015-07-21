@@ -482,7 +482,16 @@
 
 - (IBAction)back:(id)sender {
     
-    [self.navigationController popViewControllerAnimated:YES];
+     NSMutableArray * array =[[NSMutableArray alloc]initWithArray:self.navigationController.viewControllers];
+    
+    if (array.count > 1) {
+       [self.navigationController popViewControllerAnimated:YES];
+    } else {
+    
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    
+    
 }
 - (IBAction)sureMethods:(id)sender {
     [self.view endEditing:YES];

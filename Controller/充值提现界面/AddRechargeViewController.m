@@ -485,6 +485,7 @@
     [paraDic setObject:_yzm forKey:@"yzm"];
     [paraDic setObject:_yhmm forKey:@"yhmm"];
     [paraDic setObject:_jymm forKey:@"jymm"];
+    [paraDic setObject:[[self.dic objectForKey:@"bankInfoResult"] objectForKey:@"FID_JGDM"] forKey:@"jgdm"];
     
     [[NetworkModule sharedNetworkModule] postBusinessReqWithParamters:paraDic tag:_tag owner:self];
 }
