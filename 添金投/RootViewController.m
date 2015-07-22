@@ -414,8 +414,6 @@
 }
 
 
-
-
 -(void)pushLogoin{
      LoginViewController *controller = [[LoginViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
@@ -425,7 +423,7 @@
     
     [self presentViewController:nav animated:YES completion:nil];
     
-  
+    //[self.navigationController pushViewController:controller animated:YES];
     
     
 

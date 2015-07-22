@@ -60,7 +60,7 @@
         [self.view addSubview:viewline];
     }
     
-    
+    //_realName.text = @"熊永辉";
     
     //_sureBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
     
@@ -380,10 +380,11 @@
     
      if ([[change objectForKey:@"new"] integerValue] <= 0) {
         
-        sheetLab.text = @"重新获取验证码";
+        sheetLab.text = @"获取验证码";
         
         _sheetBtn.enabled = YES;
          _sheetBtn.backgroundColor = [ColorUtil colorWithHexString:@"087dcd"];
+          [child removeObserver:self forKeyPath:@"age"];
         
     } else {
         
@@ -430,15 +431,15 @@
         } else {
             
             
-                        NSMutableArray * array =[[NSMutableArray alloc]initWithArray:self.navigationController.viewControllers];
-                        //删除最后一个，也就是自己
-                        UIViewController *vc = [array objectAtIndex:array.count-3];
-                        if (vc.view.tag != 9) {
-                            [MBProgressHUD hideHUDForView:self.view animated:YES];
+//                        NSMutableArray * array =[[NSMutableArray alloc]initWithArray:self.navigationController.viewControllers];
+//                        //删除最后一个，也就是自己
+//                        UIViewController *vc = [array objectAtIndex:array.count-3];
+//                        if (vc.view.tag != 9) {
+                            [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
                             AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
                             [delegate.dictionary setValue:[NSNumber numberWithBool:1] forKey:@"isSetCert"];
                             [delegate.dictionary setValue:[NSNumber numberWithBool:1] forKey:@"isSetDealpwd"];
-                        }
+                      //  }
                         
             NameRealSuccessViewController *nameVC = [[NameRealSuccessViewController alloc] initWithNibName:@"NameRealSuccessViewController" bundle:nil];
             nameVC.hidesBottomBarWhenPushed = YES;
@@ -546,4 +547,15 @@
     });
     }
 }
+
+
+-(void)dealloc {
+
+    [child removeObserver:self forKeyPath:@"age"];
+    
+
+}
+
+
+
 @end

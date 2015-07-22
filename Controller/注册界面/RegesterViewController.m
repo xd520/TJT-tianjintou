@@ -384,7 +384,7 @@
         sheetLab.text = @"获取验证码";
         _sheetBtn.enabled = YES;
         _sheetBtn.backgroundColor = [ColorUtil colorWithHexString:@"087dcd"];
-        
+        [child removeObserver:self forKeyPath:@"age"];
     } else {
         sheetLab.text = [NSString stringWithFormat:@"%@秒后获取",[change objectForKey:@"new"]];
         _sheetBtn.enabled = NO;

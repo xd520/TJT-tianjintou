@@ -186,7 +186,7 @@
         
         _checkNumBtn.enabled = YES;
         _checkNumBtn.backgroundColor = [UIColor lightTextColor];
-        
+       [child removeObserver:self forKeyPath:@"age"]; 
     } else {
         
         sheetLab.text = [NSString stringWithFormat:@"%@秒后获取",[change objectForKey:@"new"]];

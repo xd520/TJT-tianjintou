@@ -40,14 +40,13 @@
     
     RootViewController *rootVC = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
     rootVC.view.backgroundColor = [UIColor lightGrayColor];
-   // UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootVC];
-   // navController.delegate = self;
+   
     
     
      _menuController.leftViewController = rootVC;
         
-   // self.window.rootViewController =  _menuController;
-    [self.window addSubview:_menuController.view];
+    self.window.rootViewController =  _menuController;
+   // [self.window addSubview:_menuController.view];
     
     _baseView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
     _baseView.backgroundColor = [UIColor whiteColor];
