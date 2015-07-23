@@ -495,6 +495,8 @@
     
 }
 - (IBAction)sureMethods:(id)sender {
+    
+     
     [self.view endEditing:YES];
     
     if ([_realName.text isEqualToString:@""]) {

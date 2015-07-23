@@ -114,7 +114,12 @@
     valueLabelTip.font = [UIFont boldSystemFontOfSize:15];
     [valueLabelTip setTextColor:[ColorUtil colorWithHexString:@"fe8103"]];
     valueLabelTip.textAlignment = NSTextAlignmentLeft;
-    NSRange range1 = [[[self.dic objectForKey:@"zjzhResultBean"] objectForKey:@"FID_KYZJ"] rangeOfString:@"."];//匹配得到的下标
+    
+    
+    NSString *kyzi = [NSString stringWithFormat:@"%.2f",[[[self.dic objectForKey:@"zjzhResultBean"] objectForKey:@"FID_KYZJ"] doubleValue]];
+    
+    
+    NSRange range1 = [kyzi rangeOfString:@"."];//匹配得到的下标
     
     NSLog(@"rang:%@",NSStringFromRange(range1));
     
@@ -122,9 +127,9 @@
     
     
     
-    NSString *string = [[[self.dic objectForKey:@"zjzhResultBean"] objectForKey:@"FID_KYZJ"] substringFromIndex:range1.location];
+    NSString *string = [kyzi substringFromIndex:range1.location];
     
-    NSString *str = [[[self.dic objectForKey:@"zjzhResultBean"] objectForKey:@"FID_KYZJ"] substringToIndex:range1.location];
+    NSString *str = [kyzi substringToIndex:range1.location];
     
     valueLabelTip.text = [NSString stringWithFormat:@"%@%@",[self AddComma:str],string];
     

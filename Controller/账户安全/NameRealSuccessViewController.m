@@ -52,17 +52,20 @@
     //删除最后一个，也就是自己
     
     if (array.count == 2) {
-       // [array removeObjectAtIndex:array.count-1];
-       // [array removeObjectAtIndex:array.count-1];
+        [array removeObjectAtIndex:array.count-1];
+        [self dismissViewControllerAnimated:YES completion:nil];
         
+        
+       // [array removeObjectAtIndex:array.count-1];
+        /*
         DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
          MainViewController *mainController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
        
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:mainController];
         
-        [menuController setRootController:navController animated:YES];
+        [menuController setRootController:mainController animated:YES];
         
-        
+        */
         
     } else {
     

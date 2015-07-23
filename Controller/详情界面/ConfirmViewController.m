@@ -221,7 +221,7 @@
     
     UILabel *remindLab = [[UILabel alloc] initWithFrame:CGRectMake(10, descHeight + 140, 150, 16)];
     remindLab.textColor = [ColorUtil colorWithHexString:@"333333"];
-    remindLab.text = @"使用厦金币抵扣";
+    remindLab.text = @"使用添金币抵扣";
     remindLab.font = [UIFont systemFontOfSize:14];
     [scrollView addSubview:remindLab];
     
@@ -253,7 +253,7 @@
     [view1 addSubview:totalM];
     
    UILabel *lastM = [[UILabel alloc] initWithFrame:CGRectMake(10 + titleSize.width, 10 + 15, ScreenWidth - 40 - titleSize.width, 15)];
-    lastM.text = @"(厦金币已抵用0元)";
+    lastM.text = @"(添金币已抵用0元)";
     lastM.font = [UIFont systemFontOfSize:15];
     lastM.textColor = [ColorUtil colorWithHexString:@"999999"];
     [view1 addSubview:lastM];
@@ -485,7 +485,7 @@
         UILabel *moneyLab = [[UILabel alloc] initWithFrame:CGRectMake(27, 25*i, ScreenWidth - 47, 15)];
         moneyLab.font = [UIFont systemFontOfSize:15];
         moneyLab.textColor = [ColorUtil colorWithHexString:@"333333"];
-        moneyLab.text = [NSString stringWithFormat:@"%@厦金币  %@日到期",[[dataList objectAtIndex:i] objectForKey:@"KYJE"],[[dataList objectAtIndex:i] objectForKey:@"JSRQ"]];
+        moneyLab.text = [NSString stringWithFormat:@"%@添金币  %@日到期",[[dataList objectAtIndex:i] objectForKey:@"KYJE"],[[dataList objectAtIndex:i] objectForKey:@"JSRQ"]];
         [lastView addSubview:moneyLab];
         
         UILabel *dateLab = [[UILabel alloc] initWithFrame:CGRectMake(115, 25*i, 180, 15)];
@@ -499,7 +499,7 @@
     labMoney = [[UILabel alloc] initWithFrame:CGRectMake(10, 25*dataList.count, ScreenWidth - 20, 15)];
     labMoney.font = [UIFont systemFontOfSize:14];
     labMoney.textColor = [ColorUtil colorWithHexString:@"999999"];
-    labMoney.text = @"已选择使用0厦金币";
+    labMoney.text = @"已选择使用0添金币";
     [lastView addSubview:labMoney];
     
    // [self refreshPrice];
@@ -520,7 +520,7 @@
     [lastView addSubview:totalMoney];
     
     lastMoney = [[UILabel alloc] initWithFrame:CGRectMake(10 + titleSize.width, 25*dataList.count + 30 + 15, ScreenWidth - 40 - titleSize.width, 15)];
-    lastMoney.text = @"(厦金币已抵用0元)";
+    lastMoney.text = @"(添金币已抵用0元)";
     lastMoney.font = [UIFont systemFontOfSize:15];
     lastMoney.textColor = [ColorUtil colorWithHexString:@"999999"];
     [lastView addSubview:lastMoney];
@@ -600,7 +600,7 @@
             }
         }
     }
-    [labMoney setText:[NSString stringWithFormat:@"已选择使用%d厦金币", price]];
+    [labMoney setText:[NSString stringWithFormat:@"已选择使用%d添金币", price]];
     
     if (price > [_str floatValue]) {
         [totalMoney setText:@"支付总额0.00元"];
@@ -612,7 +612,7 @@
     
     lastMoney.frame = CGRectMake(10 + titleSize.width, 25*dataList.count + 30 + 15, ScreenWidth - 40 - titleSize.width, 15);
     
-     [lastMoney setText:[NSString stringWithFormat:@"(厦金币已抵用%d元)", price]];
+     [lastMoney setText:[NSString stringWithFormat:@"(添金币已抵用%d元)", price]];
 }
 
 

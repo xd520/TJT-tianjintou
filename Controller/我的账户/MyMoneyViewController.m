@@ -532,7 +532,7 @@
                     flagLabel.font = [UIFont boldSystemFontOfSize:15];
                     [flagLabel setTextColor:[ColorUtil colorWithHexString:@"333333"]];
                     flagLabel.textAlignment = NSTextAlignmentLeft;
-                    flagLabel.text = @"厦金币";
+                    flagLabel.text = @"添金币";
                     [backView addSubview:flagLabel];
                     
 
@@ -641,7 +641,7 @@
                         flagLabel.font = [UIFont boldSystemFontOfSize:15];
                         [flagLabel setTextColor:[ColorUtil colorWithHexString:@"333333"]];
                         flagLabel.textAlignment = NSTextAlignmentLeft;
-                        flagLabel.text = @"厦金币";
+                        flagLabel.text = @"添金币";
                         [backView addSubview:flagLabel];
                         
                         
@@ -749,7 +749,7 @@
                     flagLabel.font = [UIFont boldSystemFontOfSize:15];
                     [flagLabel setTextColor:[ColorUtil colorWithHexString:@"333333"]];
                     flagLabel.textAlignment = NSTextAlignmentLeft;
-                    flagLabel.text = @"厦金币";
+                    flagLabel.text = @"添金币";
                     [backView addSubview:flagLabel];
                     
                     

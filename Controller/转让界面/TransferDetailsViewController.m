@@ -273,6 +273,12 @@
     sureBtn.layer.masksToBounds = YES;
     sureBtn.layer.cornerRadius = 4;
     
+    if ([[dataArr objectForKey:@"FID_ZRYXQ"] doubleValue] <= 0) {
+        sureBtn.backgroundColor = [UIColor grayColor];
+        sureBtn.enabled = NO;
+        
+    } else {
+    
     if (_flag) {
        sureBtn.backgroundColor = [UIColor grayColor];
         sureBtn.enabled = NO;
@@ -280,7 +286,7 @@
     sureBtn.backgroundColor = [ColorUtil colorWithHexString:@"fe8103"];
     sureBtn.enabled = YES;
     }
-    
+    }
     
     [sureBtn setTitle:@"立即投资" forState:UIControlStateNormal];
     [sureBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

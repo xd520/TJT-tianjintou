@@ -637,7 +637,7 @@
                 if ([[delegate.dictionary objectForKey:@"isSetCert"] boolValue]) {
                     
                    
-                    MoneyAccountViewController *controller = [[MoneyAccountViewController alloc] init];
+                    MoneyInfoViewController *controller = [[MoneyInfoViewController alloc] init];
                     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
                     nav.delegate = self;
                     nav.modalTransitionStyle = UIModalTransitionStyle;

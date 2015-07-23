@@ -85,6 +85,12 @@
     [array removeObjectAtIndex:array.count-1];
     //[array removeObjectAtIndex:array.count-1];
     [self.navigationController setViewControllers:array];
+        
+        AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+        delegate.menuController.delegate = self;
+        [delegate.menuController showLeftController:YES];
+        
+        
       //  AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         /*
         CPVSTabBarViewController *osTabbarVC = delegate.osTabVC;
@@ -135,13 +141,6 @@
         [array removeObjectAtIndex:array.count-1];
         //[array removeObjectAtIndex:array.count-1];
         [self.navigationController setViewControllers:array];
-    } else if ([vc.nibName isEqualToString:@"HideViewController"]){
-        [array removeObjectAtIndex:array.count-1];
-        [array removeObjectAtIndex:array.count-1];
-        [array removeObjectAtIndex:array.count-1];
-        
-        [self.navigationController setViewControllers:array];
-        
     }
     
 }
