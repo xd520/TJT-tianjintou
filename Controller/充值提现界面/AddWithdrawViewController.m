@@ -631,7 +631,16 @@
     [paraDic setObject:_yzm forKey:@"yzm"];
     [paraDic setObject:_yhmm forKey:@"yhmm"];
     [paraDic setObject:_jymm forKey:@"jymm"];
-    [paraDic setObject:[[self.dic objectForKey:@"bankInfoResult"] objectForKey:@"FID_JGDM"] forKey:@"jgdm"];
+    //[paraDic setObject:[[self.dic objectForKey:@"bankInfoResult"] objectForKey:@"FID_JGDM"] forKey:@"jgdm"];
+    
+    if ([[self.dic objectForKey:@"bankInfoResult"] objectForKey:@"FID_JGDM"] == nil) {
+        NSLog(@"1233");
+    } else {
+        [paraDic setObject:[[self.dic objectForKey:@"bankInfoResult"] objectForKey:@"FID_JGDM"] forKey:@"jgdm"];
+        
+    }
+
+    
     
     [[NetworkModule sharedNetworkModule] postBusinessReqWithParamters:paraDic tag:_tag owner:self];
 }
@@ -713,7 +722,10 @@
                             
                         }
                         */
-                        [self.navigationController popViewControllerAnimated:YES];
+                        //[self.navigationController popViewControllerAnimated:YES];
+                        [self dismissViewControllerAnimated:YES completion:nil];
+                        
+                        
                     });
                     
                     
