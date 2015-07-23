@@ -280,7 +280,7 @@
             return [NSString stringWithFormat:@"%@%@", SERVERURL, @"/app/zjgl/index/transAccount/applySaveAndOutMoneyIndex"];
             break;
         case 89:
-            return [NSString stringWithFormat:@"%@%@", SERVERURL, @"/app/zjgl/transAccount/sendVcode"];
+            return [NSString stringWithFormat:@"%@%@", SERVERURL, @"/app/zjgl/index/sendVcode"];
             break;
         case 90:
             return [NSString stringWithFormat:@"%@%@", SERVERURL, @"/app/jrzcjy/cpzr/wytz/detail"];
