@@ -477,7 +477,7 @@
                 [cellBackView setBackgroundColor:[ColorUtil colorWithHexString:@"ececec"]];
                 //图标
                 UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake((ScreenWidth - 57)/2, 57, 57, 57)];
-                [iconImageView setImage:[UIImage imageNamed:@"icon_none"]];
+                [iconImageView setImage:[UIImage imageNamed:@"none_charger_icon"]];
                 [cellBackView addSubview:iconImageView];
                 //提示
                 UILabel *tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, iconImageView.frame.origin.y + iconImageView.frame.size.height + 27, ScreenWidth, 15)];
@@ -584,7 +584,7 @@
                 [cellBackView setBackgroundColor:[ColorUtil colorWithHexString:@"ececec"]];
                 //图标
                 UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake((ScreenWidth - 57)/2, 57, 57, 57)];
-                [iconImageView setImage:[UIImage imageNamed:@"icon_none"]];
+                [iconImageView setImage:[UIImage imageNamed:@"none_charger_icon"]];
                 [cellBackView addSubview:iconImageView];
                 //提示
                 UILabel *tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, iconImageView.frame.origin.y + iconImageView.frame.size.height + 27, ScreenWidth, 15)];
@@ -693,7 +693,7 @@
                 [cellBackView setBackgroundColor:[ColorUtil colorWithHexString:@"ececec"]];
                 //图标
                 UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake((ScreenWidth - 57)/2, 57, 57, 57)];
-                [iconImageView setImage:[UIImage imageNamed:@"icon_none"]];
+                [iconImageView setImage:[UIImage imageNamed:@"none_charger_icon"]];
                 [cellBackView addSubview:iconImageView];
                 //提示
                 UILabel *tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, iconImageView.frame.origin.y + iconImageView.frame.size.height + 27, ScreenWidth, 15)];

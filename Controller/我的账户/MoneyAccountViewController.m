@@ -321,6 +321,25 @@
                 
                 
                 if ([[[dataList objectAtIndex:[indexPath row]] objectForKey:@"sell"] isEqualToString:@"can"]) {
+                    
+                    if ([[[dataList objectAtIndex:[indexPath row]] objectForKey:@"FID_GQLB"] isEqualToString:@"98"]||[[[dataList objectAtIndex:[indexPath row]] objectForKey:@"FID_GQLB"] isEqualToString:@"Z9"]) {
+                        
+                        UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth - 80, 30, 70, 30)];
+                        lab.backgroundColor = [UIColor grayColor];
+                        lab.font = [UIFont systemFontOfSize:14];
+                        //lab.layer.borderWidth = 1;
+                        lab.textColor = [UIColor whiteColor];
+                        lab.layer.masksToBounds = YES;
+                        
+                        lab.layer.cornerRadius = 4;
+                        lab.text = @"转让";
+                        lab.textAlignment = NSTextAlignmentCenter;
+                        [backView addSubview:lab];
+                        
+                    } else {
+                    
+                    
+                    
                     UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth - 90, 30, 80, 30)];
                     lab.backgroundColor = [ColorUtil colorWithHexString:@"fe8103"];
                     lab.font = [UIFont systemFontOfSize:14];
@@ -332,6 +351,7 @@
                     lab.textColor = [UIColor whiteColor];
                      lab.textAlignment = NSTextAlignmentCenter;
                     [backView addSubview:lab];
+                    }
                 } else {
                 
                     UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth - 80, 30, 70, 30)];
@@ -436,11 +456,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         
         if ([[[dataList objectAtIndex:[indexPath row]] objectForKey:@"sell"] isEqualToString:@"can"]) {
         
+             if ([[[dataList objectAtIndex:[indexPath row]] objectForKey:@"FID_GQLB"] isEqualToString:@"98"]||[[[dataList objectAtIndex:[indexPath row]] objectForKey:@"FID_GQLB"] isEqualToString:@"Z9"]) {
+             }else {
         MyTransferDetailViewController *cv = [[MyTransferDetailViewController alloc] init];
         
         cv.gqdm = [[dataList objectAtIndex:indexPath.row] objectForKey:@"FID_GQDM"];
         cv.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:cv animated:YES];
+             }
         }
     }
 }
@@ -496,13 +519,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 }
 
 -(void)reloadDataWith:(NSMutableDictionary *)arraydata {
-    NSArray *titleTip = @[@"总资产(元)",@"金融资产市值(元)",@"可用资金(元)",@"可取资金(元)",@"冻结资金(元)",@"昨日收益(元)",@"昨日到账收益(元)",@"昨日未到账收益(元)"];
-    NSArray *charTip = @[[arraydata objectForKey:@"zzc"],[arraydata objectForKey:@"jrZsz"],[arraydata objectForKey:@"kyzj"],[arraydata objectForKey:@"kqzj"],[arraydata objectForKey:@"djje"],[arraydata objectForKey:@"zrljsy"],[arraydata objectForKey:@"jrljzsy"],[arraydata objectForKey:@"zrdzsy"]];
+    NSArray *titleTip = @[@"总资产(元)",@"金融资产市值(元)",@"可取资金(元)",@"冻结资金(元)",@"昨日收益(元)",@"昨日到账收益(元)",@"昨日未到账收益(元)"];
+    NSArray *charTip = @[[arraydata objectForKey:@"zzc"],[arraydata objectForKey:@"jrZsz"],[arraydata objectForKey:@"kqzj"],[arraydata objectForKey:@"djje"],[arraydata objectForKey:@"zrljsy"],[arraydata objectForKey:@"jrljzsy"],[arraydata objectForKey:@"zrdzsy"]];
     
-    for (int i = 0; i < 8;i++) {
+    for (int i = 0; i < 7;i++) {
         //int hight = addHight + 44 + 50;
         UIView *view;
-        if (i < 5) {
+        if (i < 4) {
             view =  [[UIView alloc] initWithFrame:CGRectMake(0, 40*i, ScreenWidth , 40)];
             
         } else {
@@ -517,7 +540,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         
        // view.layer.cornerRadius = 4;
         
-        if (i == 4 ||i == 7) {
+        if (i == 3 ||i == 6) {
             UIView *lineView1 = [[UIView alloc] initWithFrame:CGRectMake(0,39.5, ScreenWidth, 0.5)];
             lineView1.backgroundColor = [ColorUtil colorWithHexString:@"dedede"];
             [view addSubview:lineView1];
@@ -553,7 +576,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         
         UILabel *labReal = [[UILabel alloc] initWithFrame:CGRectMake(170 , 12.5, ScreenWidth - 170 -10, 15)];
         
-        if ([[charTip objectAtIndex:i] floatValue] > 0) {
+        if ([[charTip objectAtIndex:i] doubleValue] > 0) {
             
             NSString *strNum = [NSString stringWithFormat:@"%.2f",[[charTip objectAtIndex:i] doubleValue]];
             
@@ -570,7 +593,29 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             labReal.text = [NSString stringWithFormat:@"%@%@",[self AddComma:str],string];
             
         } else {
-          labReal.text =[NSString stringWithFormat:@"%.2f", [[charTip objectAtIndex:i] floatValue]];
+            
+            if (-[[charTip objectAtIndex:i] doubleValue] > 0) {
+             
+                NSString *strNum = [NSString stringWithFormat:@"%.2f",-[[charTip objectAtIndex:i] doubleValue]];
+                
+                NSRange range1 = [strNum rangeOfString:@"."];//匹配得到的下标
+                
+                NSLog(@"rang:%@",NSStringFromRange(range1));
+                
+                //string = [string substringWithRange:range];//截取范围类的字符串
+                
+                NSString *string = [strNum substringFromIndex:range1.location];
+                
+                NSString *str = [strNum substringToIndex:range1.location];
+                
+                labReal.text = [NSString stringWithFormat:@"-%@%@",[self AddComma:str],string];
+                
+                
+            } else {
+            
+             labReal.text =[NSString stringWithFormat:@"%.2f", [[charTip objectAtIndex:i] doubleValue]];
+            }
+            
         }
         
         
@@ -588,7 +633,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     }
     
     
-    UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(10 , 340, ScreenWidth - 20, 13)];
+    UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(10 , 300, ScreenWidth - 20, 13)];
     lab.text = @"昨日收益包含昨日到账和未到账收益";
     lab.font = [UIFont systemFontOfSize:13];
     

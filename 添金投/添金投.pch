@@ -21,7 +21,7 @@
 #define ScreenWidth  [[UIScreen mainScreen] bounds].size.width
 
 /*
- UIModalTransitionStyleCoverVertical 从底部滑入
+
  UIModalTransitionStyleFlipHorizontal,水平翻转进入
  UIModalTransitionStyleCrossDissolve,交叉溶解
  UIModalTransitionStylePartialCurl,翻页

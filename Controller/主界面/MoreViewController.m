@@ -61,7 +61,8 @@
     
     [self.navigationController setNavigationBarHidden:YES];
    [_table setScrollEnabled:NO];
-    array = @[@"信息公告",@"检查更新",@"关于我们"];
+   // array = @[@"信息公告",@"检查更新",@"关于我们"];
+     array = @[@"信息公告",@"关于我们"];
     arrImage = @[[UIImage imageNamed:@"icon_pwd"],[UIImage imageNamed:@"icon_update"],[UIImage imageNamed:@"我的客户经理"]];
     
     
@@ -169,14 +170,14 @@
         PublicViewController *cv = [[PublicViewController alloc] init];
         cv.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:cv animated:YES];
-    }else if (indexPath.row == 1) {
+    }else if (indexPath.row == 2) {
         
         [self onCheckVersion];
         
 //        CheckVersonViewController *cv = [[CheckVersonViewController alloc] init];
 //        cv.hidesBottomBarWhenPushed = YES;
 //        [self.navigationController pushViewController:cv animated:YES];
-    }else if (indexPath.row == 2) {
+    }else if (indexPath.row == 1) {
         AboutViewController *cv = [[AboutViewController alloc] init];
         cv.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:cv animated:YES];

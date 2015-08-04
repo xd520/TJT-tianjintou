@@ -139,7 +139,7 @@
     [self.scrollView setDelegate:self];
     [self.view addSubview:self.scrollView];
     
-    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0 , 0, ScreenWidth,  ScreenHeight - 104)];
+    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0 , 0, ScreenWidth,  scrollViewHeight)];
     [tableView setDelegate:self];
     [tableView setDataSource:self];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -160,7 +160,7 @@
     [tableView addSubview:_slimeView];
     
     
-    tableViewPast = [[UITableView alloc] initWithFrame:CGRectMake(ScreenWidth , 40, ScreenWidth,  ScreenHeight - 114 - 40)];
+    tableViewPast = [[UITableView alloc] initWithFrame:CGRectMake(ScreenWidth , 40, ScreenWidth,  scrollViewHeight - 40)];
     [tableViewPast setDelegate:self];
     [tableViewPast setDataSource:self];
     tableViewPast.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -728,12 +728,12 @@
             } else {
                 cell = [tbleView dequeueReusableCellWithIdentifier:RepairCellIdentifier];
                 if (cell == nil) {
-                    cell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 80)];
+                    cell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 100)];
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     [cell setBackgroundColor:[UIColor clearColor]];
                     //添加背景View
                     
-                    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0,0, ScreenWidth, 80)];
+                    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0,0, ScreenWidth, 100)];
                     [backView setBackgroundColor:[UIColor whiteColor]];
                     //业务类别
                     UILabel *classLabTip = [[UILabel alloc] initWithFrame:CGRectMake(10, 10,65 , 15)];
@@ -789,7 +789,7 @@
                     
                     //资金余额(元)
                     
-                    UILabel *reLabTip = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth/2 , 10,65 , 15)];
+                    UILabel *reLabTip = [[UILabel alloc] initWithFrame:CGRectMake(10 , 32,65 , 15)];
                     reLabTip.text = @"资金余额";
                     reLabTip.font = [UIFont systemFontOfSize:15];
                     reLabTip.textColor = [ColorUtil colorWithHexString:@"999999"];
@@ -797,7 +797,7 @@
                     
                     
                     
-                    UILabel *reLab = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth/2 + 65, 10,ScreenWidth/2 - 75 , 15)];
+                    UILabel *reLab = [[UILabel alloc] initWithFrame:CGRectMake( 75, 32,ScreenWidth - 75 , 15)];
                     /*
                     if ([[[dataList objectAtIndex:[indexPath row]] objectForKey:@"FID_BCZJYE"] floatValue] > 0) {
                         
@@ -827,20 +827,20 @@
                     [backView addSubview:reLab];
                     
                     // 处理结果
-                    UILabel *endLabTip = [[UILabel alloc] initWithFrame:CGRectMake(10, 32,65 , 15)];
+                    UILabel *endLabTip = [[UILabel alloc] initWithFrame:CGRectMake(10, 54,65 , 15)];
                     endLabTip.text = @"处理摘要";
                     endLabTip.font = [UIFont systemFontOfSize:15];
                     endLabTip.textColor = [ColorUtil colorWithHexString:@"999999"];
                     [backView addSubview:endLabTip];
                     
-                    UILabel *endLab = [[UILabel alloc] initWithFrame:CGRectMake(75, 32,ScreenWidth - 85 , 15)];
+                    UILabel *endLab = [[UILabel alloc] initWithFrame:CGRectMake(75, 54,ScreenWidth - 85 , 15)];
                     endLab.text =[[dataList objectAtIndex:[indexPath row]] objectForKey:@"FID_ZY"];
                     endLab.font = [UIFont systemFontOfSize:13];
                     endLab.textColor = [ColorUtil colorWithHexString:@"333333"];
                     [backView addSubview:endLab];
                     
                     
-                    UILabel *dateLab = [[UILabel alloc] initWithFrame:CGRectMake(10, 54,ScreenWidth - 20 , 14)];
+                    UILabel *dateLab = [[UILabel alloc] initWithFrame:CGRectMake(10, 76,ScreenWidth - 20 , 14)];
                     //日期格式转化
                     NSMutableString *strDate = [[NSMutableString alloc] initWithString:[[dataList objectAtIndex:[indexPath row]] objectForKey:@"FID_RQ"]];
                     // NSString *newStr = [strDate insertring:@"-" atIndex:3];
@@ -904,12 +904,12 @@
             } else {
                 cell = [tbleView dequeueReusableCellWithIdentifier:RepairCellIdentifier];
                 if (cell == nil) {
-                    cell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 80)];
+                    cell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 100)];
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     [cell setBackgroundColor:[UIColor clearColor]];
                     //添加背景View
                     
-                    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0,0, ScreenWidth, 80)];
+                    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0,0, ScreenWidth, 100)];
                     [backView setBackgroundColor:[UIColor whiteColor]];
                     //业务类别
                     UILabel *classLabTip = [[UILabel alloc] initWithFrame:CGRectMake(10, 10,65 , 15)];
@@ -982,7 +982,7 @@
                     
                     //资金余额(元)
                     
-                    UILabel *reLabTip = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth/2, 10,65 , 15)];
+                    UILabel *reLabTip = [[UILabel alloc] initWithFrame:CGRectMake(10, 32,65 , 15)];
                     reLabTip.text = @"资金余额";
                     reLabTip.font = [UIFont systemFontOfSize:15];
                     reLabTip.textColor = [ColorUtil colorWithHexString:@"999999"];
@@ -990,7 +990,7 @@
                     
                     
                     
-                    UILabel *reLab = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth/2 + 65, 10,ScreenWidth/2 - 75 , 15)];
+                    UILabel *reLab = [[UILabel alloc] initWithFrame:CGRectMake(10 + 65, 32,ScreenWidth - 75 , 15)];
                      reLab.text = [NSString stringWithFormat:@"%.2f元",[[[dataListPast objectAtIndex:[indexPath row]] objectForKey:@"FID_BCZJYE"] floatValue]];
                     
                     /*
@@ -1026,20 +1026,20 @@
                     [backView addSubview:reLab];
                     
                     // 处理结果
-                    UILabel *endLabTip = [[UILabel alloc] initWithFrame:CGRectMake(10, 32,65 , 15)];
+                    UILabel *endLabTip = [[UILabel alloc] initWithFrame:CGRectMake(10, 54,65 , 15)];
                     endLabTip.text = @"处理摘要";
                     endLabTip.font = [UIFont systemFontOfSize:15];
                     endLabTip.textColor = [ColorUtil colorWithHexString:@"999999"];
                     [backView addSubview:endLabTip];
                     
-                    UILabel *endLab = [[UILabel alloc] initWithFrame:CGRectMake(75, 32,ScreenWidth - 85 , 15)];
+                    UILabel *endLab = [[UILabel alloc] initWithFrame:CGRectMake(75, 54,ScreenWidth - 85 , 15)];
                     endLab.text =[[dataListPast objectAtIndex:[indexPath row]] objectForKey:@"FID_ZY"];
                     endLab.font = [UIFont systemFontOfSize:15];
                     endLab.textColor = [ColorUtil colorWithHexString:@"333333"];
                     [backView addSubview:endLab];
                     
                     
-                    UILabel *dateLab = [[UILabel alloc] initWithFrame:CGRectMake(10, 54,ScreenWidth - 20 , 14)];
+                    UILabel *dateLab = [[UILabel alloc] initWithFrame:CGRectMake(10, 76,ScreenWidth - 20 , 14)];
                     //日期格式转化
                     NSMutableString *strDate = [[NSMutableString alloc] initWithString:[[dataListPast objectAtIndex:[indexPath row]] objectForKey:@"FID_RQ"]];
                     // NSString *newStr = [strDate insertring:@"-" atIndex:3];
@@ -1106,14 +1106,14 @@
         if ([indexPath row] == [dataList count]) {
             return 40;
         } else {
-            return 80;
+            return 100;
         }
         
     } else {
         if ([indexPath row] == [dataListPast count]) {
             return 40;
         } else {
-            return 80;
+            return 100;
         }
     }
     return 95;

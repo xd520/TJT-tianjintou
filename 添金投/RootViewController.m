@@ -723,7 +723,7 @@
     if ([[arraydata objectForKey:@"zzc"] isEqualToString:@""]||[[arraydata objectForKey:@"zzc"] isEqualToString:@"0"]) {
         total.text = @"0.00";
     } else {
-        NSString *strZzc = [NSString stringWithFormat:@"%.2f",[[arraydata objectForKey:@"zzc"] floatValue]];
+        NSString *strZzc = [NSString stringWithFormat:@"%.2f",[[arraydata objectForKey:@"zzc"] doubleValue]];
         
         NSRange range1 = [strZzc rangeOfString:@"."];//匹配得到的下标
         
@@ -748,7 +748,7 @@
         incomeLab.text = @"0.00";
     } else {
         
-        NSString *strjrZsz = [NSString stringWithFormat:@"%.2f",[[arraydata objectForKey:@"jrljdsy"] floatValue]];
+        NSString *strjrZsz = [NSString stringWithFormat:@"%.2f",[[arraydata objectForKey:@"jrljdsy"] doubleValue]];
         NSRange range3 = [strjrZsz rangeOfString:@"."];//匹配得到的下标
         
         NSLog(@"rang:%@",NSStringFromRange(range3));
@@ -775,7 +775,7 @@
         accumulatedLab.text = @"0.00";
     } else {
         
-        NSString *strrljzsy = [NSString stringWithFormat:@"%.2f",[[arraydata objectForKey:@"jrljzsy"] floatValue]];
+        NSString *strrljzsy = [NSString stringWithFormat:@"%.2f",[[arraydata objectForKey:@"jrljzsy"] doubleValue]];
         
         NSRange range = [strrljzsy rangeOfString:@"."];//匹配得到的下标
         

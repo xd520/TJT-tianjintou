@@ -617,6 +617,7 @@
                 [cell.contentView addSubview:cellBackView];
             }
         } else {
+            
             if ([indexPath row] == [dataList count]) {
                 moreCell = [tbleView dequeueReusableCellWithIdentifier:@"loadMoreCell"];
                 moreCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"loadMoreCell"];
@@ -630,7 +631,7 @@
                 toastLabel.text = @"更多...";
                 toastLabel.textAlignment = NSTextAlignmentCenter;
                 [moreCell.contentView addSubview:toastLabel];
-                return moreCell;
+               // return moreCell;
             } else {
                 cell = [tbleView dequeueReusableCellWithIdentifier:RepairCellIdentifier];
                 if (cell == nil) {
@@ -700,7 +701,7 @@
                     giveLabelTip.font = [UIFont systemFontOfSize:14];
                     [giveLabelTip setTextColor:[ColorUtil colorWithHexString:@"333333"]];
                     giveLabelTip.textAlignment = NSTextAlignmentLeft;
-                    giveLabelTip.text = [NSString stringWithFormat:@"%.2f",[[[dataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTJG"] floatValue]*[[[dataList objectAtIndex:indexPath.row] objectForKey:@"FID_CJSL"] floatValue]];
+                    giveLabelTip.text = [NSString stringWithFormat:@"%.2f",[[[dataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTJG"] doubleValue]*[[[dataList objectAtIndex:indexPath.row] objectForKey:@"FID_CJSL"] doubleValue]];
                     // [backView addSubview:giveLabelTip];
                     
                     
@@ -734,7 +735,16 @@
                     valueLabelTip.font = [UIFont systemFontOfSize:14];
                     [valueLabelTip setTextColor:[ColorUtil colorWithHexString:@"333333"]];
                     valueLabelTip.textAlignment = NSTextAlignmentLeft;
-                   NSString *abc  = [NSString stringWithFormat:@"%.2f",[[[dataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTJG"] floatValue]*[[[dataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTSL"] integerValue]];
+                    NSString *abc;
+                    
+                    if ([[[dataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTLB"] isEqualToString:@"15"]) {
+                         abc = [NSString stringWithFormat:@"%.2f",[[[dataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTJG"] doubleValue]*[[[dataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTSL"] integerValue]];
+                    } else  {
+                    
+                        abc = [NSString stringWithFormat:@"%.2f",[[[dataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTJE"] doubleValue]];
+                    }
+                    
+                   
                     
                     NSRange range1 = [abc rangeOfString:@"."];//匹配得到的下标
                     
@@ -903,7 +913,9 @@
                     giveLabelTip.font = [UIFont systemFontOfSize:14];
                     [giveLabelTip setTextColor:[ColorUtil colorWithHexString:@"333333"]];
                     giveLabelTip.textAlignment = NSTextAlignmentLeft;
-                    giveLabelTip.text = [NSString stringWithFormat:@"%.2f",[[[finishDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTJG"] floatValue]*[[[finishDataList objectAtIndex:indexPath.row] objectForKey:@"FID_CJSL"] floatValue]];
+                    
+                    
+                    giveLabelTip.text = [NSString stringWithFormat:@"%.2f",[[[finishDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTJG"] doubleValue]*[[[finishDataList objectAtIndex:indexPath.row] objectForKey:@"FID_CJSL"] doubleValue]];
                     // [backView addSubview:giveLabelTip];
                     
                     
@@ -937,7 +949,19 @@
                     valueLabelTip.font = [UIFont systemFontOfSize:14];
                     [valueLabelTip setTextColor:[ColorUtil colorWithHexString:@"333333"]];
                     valueLabelTip.textAlignment = NSTextAlignmentLeft;
-                    NSString *abc  = [NSString stringWithFormat:@"%.2f",[[[finishDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTJG"] floatValue]*[[[finishDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTSL"] integerValue]];
+                   // NSString *abc  = [NSString stringWithFormat:@"%.2f",[[[finishDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTJG"] doubleValue]*[[[finishDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTSL"] doubleValue]];
+                    
+                    NSString *abc;
+                    
+                    if ([[[finishDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTLB"] isEqualToString:@"15"]) {
+                        abc = [NSString stringWithFormat:@"%.2f",[[[finishDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTJG"] doubleValue]*[[[finishDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTSL"] integerValue]];
+                    } else  {
+                        
+                        abc = [NSString stringWithFormat:@"%.2f",[[[finishDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTJE"] doubleValue]];
+                    }
+                    
+
+                    
                     
                     NSRange range1 = [abc rangeOfString:@"."];//匹配得到的下标
                     
@@ -1109,7 +1133,7 @@
                     giveLabelTip.font = [UIFont systemFontOfSize:14];
                     [giveLabelTip setTextColor:[ColorUtil colorWithHexString:@"333333"]];
                     giveLabelTip.textAlignment = NSTextAlignmentLeft;
-                    giveLabelTip.text = [NSString stringWithFormat:@"%.2f",[[[waitDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTJG"] floatValue]*[[[waitDataList objectAtIndex:indexPath.row] objectForKey:@"FID_CJSL"] floatValue]];
+                    giveLabelTip.text = [NSString stringWithFormat:@"%.2f",[[[waitDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTJG"] doubleValue]*[[[waitDataList objectAtIndex:indexPath.row] objectForKey:@"FID_CJSL"] doubleValue]];
                     // [backView addSubview:giveLabelTip];
                     
                     
@@ -1143,7 +1167,18 @@
                     valueLabelTip.font = [UIFont systemFontOfSize:14];
                     [valueLabelTip setTextColor:[ColorUtil colorWithHexString:@"333333"]];
                     valueLabelTip.textAlignment = NSTextAlignmentLeft;
-                    NSString *abc  = [NSString stringWithFormat:@"%.2f",[[[waitDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTJG"] floatValue]*[[[waitDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTSL"] integerValue]];
+                   // NSString *abc  = [NSString stringWithFormat:@"%.2f",[[[waitDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTJG"] doubleValue]*[[[waitDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTSL"] doubleValue]];
+                    
+                    NSString *abc;
+                    
+                    if ([[[waitDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTLB"] isEqualToString:@"15"]) {
+                        abc = [NSString stringWithFormat:@"%.2f",[[[waitDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTJG"] doubleValue]*[[[waitDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTSL"] integerValue]];
+                    } else  {
+                        
+                        abc = [NSString stringWithFormat:@"%.2f",[[[waitDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTJE"] doubleValue]];
+                    }
+                    
+
                     
                     NSRange range1 = [abc rangeOfString:@"."];//匹配得到的下标
                     
@@ -1315,7 +1350,7 @@
                     giveLabelTip.font = [UIFont systemFontOfSize:14];
                     [giveLabelTip setTextColor:[ColorUtil colorWithHexString:@"333333"]];
                     giveLabelTip.textAlignment = NSTextAlignmentLeft;
-                    giveLabelTip.text = [NSString stringWithFormat:@"%.2f",[[[shipDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTJG"] floatValue]*[[[shipDataList objectAtIndex:indexPath.row] objectForKey:@"FID_CJSL"] floatValue]];
+                    giveLabelTip.text = [NSString stringWithFormat:@"%.2f",[[[shipDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTJG"] doubleValue]*[[[shipDataList objectAtIndex:indexPath.row] objectForKey:@"FID_CJSL"] doubleValue]];
                     // [backView addSubview:giveLabelTip];
                     
                     
@@ -1349,7 +1384,19 @@
                     valueLabelTip.font = [UIFont systemFontOfSize:14];
                     [valueLabelTip setTextColor:[ColorUtil colorWithHexString:@"333333"]];
                     valueLabelTip.textAlignment = NSTextAlignmentLeft;
-                    NSString *abc  = [NSString stringWithFormat:@"%.2f",[[[shipDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTJG"] floatValue]*[[[shipDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTSL"] integerValue]];
+                   // NSString *abc  = [NSString stringWithFormat:@"%.2f",[[[shipDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTJG"] doubleValue]*[[[shipDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTSL"] doubleValue]];
+                    
+                    NSString *abc;
+                    
+                    if ([[[shipDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTLB"] isEqualToString:@"15"]) {
+                        abc = [NSString stringWithFormat:@"%.2f",[[[shipDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTJG"] doubleValue]*[[[shipDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTSL"] integerValue]];
+                    } else  {
+                        
+                        abc = [NSString stringWithFormat:@"%.2f",[[[shipDataList objectAtIndex:indexPath.row] objectForKey:@"FID_WTJE"] doubleValue]];
+                    }
+                    
+
+                    
                     
                     NSRange range1 = [abc rangeOfString:@"."];//匹配得到的下标
                     

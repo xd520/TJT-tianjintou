@@ -179,7 +179,7 @@
     [self.view addSubview:self.scrollView];
     
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 114)];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 80, ScreenWidth, ScreenHeight - 194)];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView setTag:TTABLEVIEW];
     [self.tableView setDelegate:self];
@@ -224,7 +224,7 @@
     
     //初始化已发货TableView
    
-    self.waitTableView = [[UITableView alloc] initWithFrame:CGRectMake(ScreenWidth*2, 0, ScreenWidth, ScreenHeight - 114)];
+    self.waitTableView = [[UITableView alloc] initWithFrame:CGRectMake(ScreenWidth*2, 80, ScreenWidth, ScreenHeight - 194)];
     self.waitTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.waitTableView setTag:WAITTABLEVIEW];
     [self.waitTableView setDelegate:self];
@@ -375,8 +375,8 @@
     timeTooBarPast.hidden = YES;
     [self.scrollView addSubview:timeTooBarPast];
     
-   // [self reloadView];
-  //  [self reloadViewPast];
+    [self reloadView];
+    [self reloadViewPast];
     
     
     //添加指示器及遮罩
@@ -386,14 +386,14 @@
     hud.labelText = @"加载中...";
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         //获取类别信息
-         NSString *str =[self dateToStringDate:[NSDate date]];
+        // NSString *str =[self dateToStringDate:[NSDate date]];
         //购买记录
-        [self requestRecordList:str withEndDate:str withWtlb:@"15,1,59" withType:@"1" withStart:start withSize:limit tag:kBusinessTagGetJRcpzrwytz];
+        [self requestRecordList:dateLStarabel.text withEndDate:dateLEndabel.text withWtlb:@"15,1,59" withType:@"1" withStart:start withSize:limit tag:kBusinessTagGetJRcpzrwytz];
         
         //购买申请
         [self requestRecordPastList:@"15,1,59" withType:@"2" withStart:finishStart withSize:limit tag:kBusinessTagGetJRcpzrwytzPast];
         //转让记录
-        [self requestRecordList:str withEndDate:str withWtlb:@"2,60" withType:@"3" withStart:waitStart withSize:limit tag:kBusinessTagGetJRcpzrwytzPast1];
+        [self requestRecordList:dateLStarabelPast.text withEndDate:dateLEndabelPast.text withWtlb:@"2,60" withType:@"3" withStart:waitStart withSize:limit tag:kBusinessTagGetJRcpzrwytzPast1];
         //转让申请
         [self requestRecordPastList:@"2,60" withType:@"4" withStart:shipStart withSize:limit tag:kBusinessTagGetJRcpzrwytzPast2];
         
@@ -926,11 +926,11 @@
 #pragma mark - slimeRefresh delegate
 - (void)slimeRefreshStartRefresh:(SRRefreshView *)refreshView
 {
-     NSString *str =[self dateToStringDate:[NSDate date]];
+    // NSString *str =[self dateToStringDate:[NSDate date]];
     if (refreshView.tag == TTR) {
         startBak = [NSString stringWithString:start];
         start = @"1";
-        [self requestRecordList:str withEndDate:str withWtlb:@"15,1,59" withType:@"1" withStart:start withSize:limit tag:kBusinessTagGetJRcpzrwytzAgain];
+        [self requestRecordList:dateLStarabel.text withEndDate:dateLEndabel.text withWtlb:@"15,1,59" withType:@"1" withStart:start withSize:limit tag:kBusinessTagGetJRcpzrwytzAgain];
     } else if (refreshView.tag == TFINISHTR) {
         finishStartBak = [NSString stringWithString:finishStart];
         finishStart = @"1";
@@ -938,7 +938,7 @@
     } else if (refreshView.tag == WAITTTR) {
         waitStartBak = [NSString stringWithString:waitStart];
         waitStart = @"1";
-        [self requestRecordList:str withEndDate:str withWtlb:@"2,60" withType:@"3" withStart:waitStart withSize:limit tag:kBusinessTagGetJRcpzrwytzPast1Again];
+        [self requestRecordList:dateLStarabelPast.text withEndDate:dateLEndabelPast.text withWtlb:@"2,60" withType:@"3" withStart:waitStart withSize:limit tag:kBusinessTagGetJRcpzrwytzPast1Again];
     } else if (refreshView.tag == SHIPTTR) {
         shipStartBak = [NSString stringWithString:shipStart];
         shipStart = @"1";
@@ -949,7 +949,7 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *str =[self dateToStringDate:[NSDate date]];
+   // NSString *str =[self dateToStringDate:[NSDate date]];
 
     if (tableView.tag == TTABLEVIEW) {
         if ([indexPath row] == [dataList count]) {
@@ -959,7 +959,7 @@
                         
                     } else {
                         label.text = @"正在加载中...";
-                         [self requestRecordList:str withEndDate:str withWtlb:@"15,1,59" withType:@"1" withStart:start withSize:limit tag:kBusinessTagGetJRcpzrwytz];
+                         [self requestRecordList:dateLStarabel.text withEndDate:dateLEndabel.text withWtlb:@"15,1,59" withType:@"1" withStart:start withSize:limit tag:kBusinessTagGetJRcpzrwytz];
                         [tableView deselectRowAtIndexPath:indexPath animated:YES];
                     }
                 }
@@ -987,7 +987,7 @@
                         
                     } else {
                         label.text = @"正在加载中...";
-                          [self requestRecordList:str withEndDate:str withWtlb:@"2,60" withType:@"3" withStart:waitStart withSize:limit tag:kBusinessTagGetJRcpzrwytzPast1];
+                          [self requestRecordList:dateLStarabelPast.text withEndDate:dateLEndabelPast.text withWtlb:@"2,60" withType:@"3" withStart:waitStart withSize:limit tag:kBusinessTagGetJRcpzrwytzPast1];
                         [tableView deselectRowAtIndexPath:indexPath animated:YES];
                     }
                 }
@@ -1081,7 +1081,7 @@
                 [tipLabel setTextAlignment:NSTextAlignmentCenter];
                 [tipLabel setTextColor:[ColorUtil colorWithHexString:@"404040"]];
                  tipLabel.backgroundColor = [UIColor clearColor];
-                [tipLabel setText:@"您还没有投资记录哦~"];
+                [tipLabel setText:@"您还没有记录哦~"];
                 [cellBackView addSubview:tipLabel];
                 [cell.contentView addSubview:cellBackView];
             }
@@ -1186,7 +1186,7 @@
                 [tipLabel setTextAlignment:NSTextAlignmentCenter];
                 [tipLabel setTextColor:[ColorUtil colorWithHexString:@"404040"]];
                 tipLabel.backgroundColor = [UIColor clearColor];
-                [tipLabel setText:@"您还没有投资记录哦~"];
+                [tipLabel setText:@"您还没有记录哦~"];
                 [cellBackView addSubview:tipLabel];
                 [cell.contentView addSubview:cellBackView];
             }
@@ -1292,7 +1292,7 @@
                 [tipLabel setTextAlignment:NSTextAlignmentCenter];
                 [tipLabel setTextColor:[ColorUtil colorWithHexString:@"404040"]];
                  tipLabel.backgroundColor = [UIColor clearColor];
-                [tipLabel setText:@"您还没有投资记录哦~"];
+                [tipLabel setText:@"您还没有记录哦~"];
                 [cellBackView addSubview:tipLabel];
                 [cell.contentView addSubview:cellBackView];
             }
@@ -1398,7 +1398,7 @@
                 [tipLabel setTextAlignment:NSTextAlignmentCenter];
                 [tipLabel setTextColor:[ColorUtil colorWithHexString:@"404040"]];
                  tipLabel.backgroundColor = [UIColor clearColor];
-                [tipLabel setText:@"您还没有投资记录哦~"];
+                [tipLabel setText:@"您还没有记录哦~"];
                 [cellBackView addSubview:tipLabel];
                 [cell.contentView addSubview:cellBackView];
             }

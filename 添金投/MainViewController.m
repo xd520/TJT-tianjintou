@@ -80,7 +80,7 @@
     NSString *sortValPast;
     
     
-    
+    NSString *strNum;
     
     
 }
@@ -94,7 +94,34 @@
 -(void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
+    if ([strNum isEqualToString:@"1"]) {
+        
+   
+    if (dataListPast.count > 0  ) {
+        [dataListPast removeAllObjects];
+    }
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.dimBackground = YES;
+    hud.delegate = self;
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"加载中...";
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        //[self requestCategoryList:start limit:limit tag:kBusinessTagGetJRwdtzloadData];
+        //投资专区
+        //[self requestList:start limit:limit sortName:sortName val:sortVal tag:kBusinessTagGetJRwdtzloadData];
+        startPast = @"1";
+        //转让专区
+        [self requestTransferList:startPast limit:limitPast sortName:sortNamePast val:sortValPast tag:kBusinessTagGetJRcpzrwytz1];
+        
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+        });
+    });
 
+    }
+    
 }
 
 
@@ -106,7 +133,7 @@
     startPast = @"1";
     limitPast = @"10";
     startBakPast = @"";
-    
+    strNum = @"";
     sortName = @"";
     sortVal = @"";
     sortNamePast = @"";
@@ -196,6 +223,7 @@
             });
             
         } else if (index == 2) {
+            strNum = @"1";
             
             if (dataListPast.count > 0) {
                 [dataListPast removeAllObjects];
@@ -267,7 +295,10 @@
     [self.view addSubview:self.scrollView];
     
     
-    NSArray *titleArr = @[@"默认",@"预期收益↑",@"投资期限↑",@"起投金额↑"];
+    NSArray *titleArrTranfer = @[@"默认",@"预期收益↑",@"投资期限↑",@"起投金额↑"];
+     NSArray *titleArr = @[@"默认",@"年化收益率↑",@"结息日期↑",@"转让金额↑"];
+    
+    
     float autoSizeScaleX,autoSizeScaleY;
     if(ScreenHeight > 480){
         autoSizeScaleX = ScreenWidth/320;
@@ -291,7 +322,7 @@
             
             lab1 = [[UILabel alloc] init];
             lab1.frame = CGRectMake(0, 5, 55*autoSizeScaleX-0.5, 30);
-            lab1.text = [titleArr objectAtIndex:i];
+            lab1.text = [titleArrTranfer objectAtIndex:i];
             lab1.textAlignment = NSTextAlignmentCenter;
             lab1.font = [UIFont systemFontOfSize:13];
             //lab1.userInteractionEnabled = YES;
@@ -305,7 +336,7 @@
             btn.frame = CGRectMake(ScreenWidth + 55*autoSizeScaleX, 0, 87.5*autoSizeScaleX, 40);
             lab2 = [[UILabel alloc] init];
             lab2.frame = CGRectMake(0, 5, 87.5*autoSizeScaleX - 0.5, 30);
-            lab2.text = [titleArr objectAtIndex:i];
+            lab2.text = [titleArrTranfer objectAtIndex:i];
             lab2.font = [UIFont systemFontOfSize:13];
             lab2.textAlignment = NSTextAlignmentCenter;
             lab2.textColor = [ColorUtil colorWithHexString:@"999999"];
@@ -319,7 +350,7 @@
             btn.frame = CGRectMake(ScreenWidth + (55 + 87.5)*autoSizeScaleX, 0, 87.5*autoSizeScaleX, 40);
             lab3 = [[UILabel alloc] init];
             lab3.frame = CGRectMake(0, 5, 87.5*autoSizeScaleX - 0.5, 30);
-            lab3.text = [titleArr objectAtIndex:i];
+            lab3.text = [titleArrTranfer objectAtIndex:i];
             lab3.font = [UIFont systemFontOfSize:13];
             lab3.textAlignment = NSTextAlignmentCenter;
             lab3.textColor = [ColorUtil colorWithHexString:@"999999"];
@@ -333,7 +364,7 @@
             btn.frame = CGRectMake(ScreenWidth + (55 + 175)*autoSizeScaleX, 0, 90*autoSizeScaleX, 40);
             lab4 = [[UILabel alloc] init];
             lab4.frame = CGRectMake(0, 5, 90*autoSizeScaleX, 30);
-            lab4.text = [titleArr objectAtIndex:i];
+            lab4.text = [titleArrTranfer objectAtIndex:i];
             lab4.font = [UIFont systemFontOfSize:13];
             lab4.textColor = [ColorUtil colorWithHexString:@"999999"];
             lab4.textAlignment = NSTextAlignmentCenter;
@@ -599,8 +630,14 @@
         tiplab4.textColor = [ColorUtil colorWithHexString:@"999999"];
         tiplab3.textColor = [ColorUtil colorWithHexString:@"999999"];
         tiplab1.textColor = [ColorUtil colorWithHexString:@"fe8103"];
-        sortNamePast = @"FID_WTH";
+       // sortNamePast = @"FID_WTH";
+       // sortValPast = @"";
+        
+       // startPast = @"1";
+        sortNamePast = @"";
         sortValPast = @"";
+        
+        
         
     } else if (btn.tag == 1) {
         // lab2.textColor = [UIColor grayColor];
@@ -610,12 +647,12 @@
         sortNamePast = @"FID_SYL";
         if (tipindext%2 == 0) {
             tiplab2.textColor = [ColorUtil colorWithHexString:@"fe8103"];
-            tiplab2.text = @"预期收益↑";
+            tiplab2.text = @"年化收益率↑";
             sortValPast = @"ASC";
         } else {
             
             tiplab2.textColor = [ColorUtil colorWithHexString:@"fe8103"];
-            tiplab2.text = @"预期收益↓";
+            tiplab2.text = @"年化收益率↓";
             sortValPast = @"DESC";
         }
         
@@ -628,12 +665,12 @@
         sortNamePast = @"FID_SYTS";
         if (tipindext%2 == 0) {
             tiplab3.textColor = [ColorUtil colorWithHexString:@"fe8103"];
-            tiplab3.text = @"投资期限↑";
+            tiplab3.text = @"结息日期↑";
             sortValPast = @"ASC";
         } else {
             
             tiplab3.textColor = [ColorUtil colorWithHexString:@"fe8103"];
-            tiplab3.text = @"投资期限↓";
+            tiplab3.text = @"结息日期↓";
             sortValPast = @"DESC";
         }
         
@@ -645,12 +682,12 @@
         sortNamePast = @"FID_CJJE";
         if (tipindext%2 == 0) {
             tiplab4.textColor = [ColorUtil colorWithHexString:@"fe8103"];
-            tiplab4.text = @"起投金额↑";
+            tiplab4.text = @"转让金额↑";
             sortValPast = @"ASC";
         } else {
             
             tiplab4.textColor = [ColorUtil colorWithHexString:@"fe8103"];
-            tiplab4.text = @"起投金额↓";
+            tiplab4.text = @"转让金额↓";
             sortValPast = @"DESC";
         }
         

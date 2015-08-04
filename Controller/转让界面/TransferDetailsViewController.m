@@ -37,7 +37,7 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self requestLogin:_gqdm withWTH:_wth tag:kBusinessTagGetJRSellingAgain];
+   
 }
 
 - (void)viewDidLoad
@@ -457,7 +457,34 @@
             //            subing = NO;
         } else {
             [MBProgressHUD hideHUDForView:self.view animated:YES];
-                firstDic = [dataArray objectAtIndex:0];
+            
+            if ([[[dataArray objectAtIndex:0] objectForKey:@"isBingingCard"] boolValue]) {
+                
+                if ([[[dataArray objectAtIndex:0] objectForKey:@"FID_KYZJ"] floatValue] > [[[dataArray objectAtIndex:0] objectForKey:@"FID_WTJE"] floatValue]) {
+                    
+                    ConfirmTransferViewController *vc = [[ConfirmTransferViewController alloc] init];
+                    vc.dic = [dataArray objectAtIndex:0];
+                    vc.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:vc animated:YES];
+                }else {
+                    [self.view makeToast:@"您的可用少于转让价格，请先充值" duration:1 position:@"center"];
+                }
+ 
+                
+                
+                
+            } else {
+                
+                [self.view makeToast:@"请先绑定银行卡" duration:1 position:@"center"];
+                
+            }
+
+            
+            
+          
+            
+            
+              //  firstDic = [dataArray objectAtIndex:0];
         }
     }
 
@@ -564,23 +591,10 @@
     if (delegate.logingUser.count > 0) {
         
         if ([[delegate.logingUser objectForKey:@"success"] boolValue] == YES) {
-            if ([[firstDic objectForKey:@"isBingingCard"] boolValue]) {
-                if ([[firstDic objectForKey:@"FID_KYZJ"] floatValue] > [[firstDic objectForKey:@"FID_WTJE"] floatValue]) {
-                    
-                    ConfirmTransferViewController *vc = [[ConfirmTransferViewController alloc] init];
-                    vc.dic = firstDic;
-                    vc.hidesBottomBarWhenPushed = YES;
-                    [self.navigationController pushViewController:vc animated:YES];
-                }else {
-                    [self.view makeToast:@"您的可用少于转让价格，请先充值" duration:1 position:@"center"];
-                }
-                
-            } else {
-                
-                [self.view makeToast:@"请先绑定银行卡" duration:1 position:@"center"];
-                
-            }
-        
+            
+             [self requestLogin:_gqdm withWTH:_wth tag:kBusinessTagGetJRSellingAgain];
+            
+            
         } else {
             
            // delegate.strlogin = @"2";

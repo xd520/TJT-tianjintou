@@ -9,6 +9,7 @@
 #import "TransferSuccessViewController.h"
 #import "AppDelegate.h"
 #import "TransferDetailsViewController.h"
+#import "DDMenuController.h"
 
 @interface TransferSuccessViewController ()
 
@@ -63,6 +64,12 @@
     [array removeObjectAtIndex:array.count-1];
     
     [self.navigationController setViewControllers:array];
+    
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    delegate.menuController.delegate = self;
+    [delegate.menuController showLeftController:YES];
+    
+    
     /*
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     CPVSTabBarViewController *osTabbarVC = delegate.osTabVC;

@@ -1754,10 +1754,11 @@
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "/Users/mac/Desktop/添金投/添金投/添金投.pch";
 				INFOPLIST_FILE = "添金投/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "22e6cde2-56e2-40c8-8539-3629b81d02b0";
+				PROVISIONING_PROFILE = "d1351066-8803-492d-a024-4bcd69018fb7";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1771,10 +1772,11 @@
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "/Users/mac/Desktop/添金投/添金投/添金投.pch";
 				INFOPLIST_FILE = "添金投/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "22e6cde2-56e2-40c8-8539-3629b81d02b0";
+				PROVISIONING_PROFILE = "d1351066-8803-492d-a024-4bcd69018fb7";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
