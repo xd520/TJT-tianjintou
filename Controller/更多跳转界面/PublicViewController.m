@@ -400,7 +400,7 @@
                     [backView setBackgroundColor:[ColorUtil colorWithHexString:@"fafafa"]];
                     //品牌
                     
-                    UILabel *brandLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 200, 39)];
+                    UILabel *brandLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, ScreenWidth - 120, 39)];
                     brandLabel.backgroundColor = [UIColor clearColor];
                     brandLabel.font = [UIFont boldSystemFontOfSize:15];
                     [brandLabel setTextColor:[ColorUtil colorWithHexString:@"646464"]];

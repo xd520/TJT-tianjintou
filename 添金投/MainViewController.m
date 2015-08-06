@@ -1664,7 +1664,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             nameLab = [[UILabel alloc] initWithFrame:CGRectMake(55, 12, ScreenWidth/2 - 80, 12)];
             
             UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 68, 60, 12)];
-            dateLabel.text = [NSString stringWithFormat:@"%@天",[[dataListFirst objectAtIndex:i] objectForKey:@"ZRRQ"]];
+            dateLabel.text = [NSString stringWithFormat:@"%@天",[[dataListFirst objectAtIndex:i] objectForKey:@"QX"]];
             dateLabel.font = [UIFont systemFontOfSize:12];
             dateLabel.textColor = [ColorUtil colorWithHexString:@"666666"];
             // dateLabel.textAlignment = NSTextAlignmentRight;
@@ -1697,7 +1697,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             //续存期
             
             UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 68, 60, 12)];
-            dateLabel.text = [NSString stringWithFormat:@"%@天",[[dataListFirst objectAtIndex:i] objectForKey:@"ZRRQ"]];
+            dateLabel.text = [NSString stringWithFormat:@"%@天",[[dataListFirst objectAtIndex:i] objectForKey:@"QX"]];
             dateLabel.font = [UIFont systemFontOfSize:12];
             dateLabel.textColor = [ColorUtil colorWithHexString:@"666666"];
             // dateLabel.textAlignment = NSTextAlignmentRight;
@@ -1735,7 +1735,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             nameLab = [[UILabel alloc] initWithFrame:CGRectMake(55, 12, ScreenWidth - 65, 12)];
             
             UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake( 95, 34, 40, 12)];
-            dateLabel.text = [NSString stringWithFormat:@"%@天",[[dataListFirst objectAtIndex:i] objectForKey:@"ZRRQ"]];
+            dateLabel.text = [NSString stringWithFormat:@"%@天",[[dataListFirst objectAtIndex:i] objectForKey:@"QX"]];
             dateLabel.font = [UIFont systemFontOfSize:12];
             dateLabel.textColor = [ColorUtil colorWithHexString:@"666666"];
             // dateLabel.textAlignment = NSTextAlignmentCenter;

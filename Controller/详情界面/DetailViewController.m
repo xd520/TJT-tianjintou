@@ -123,7 +123,7 @@
 -(void)reloadDataWith:(NSMutableDictionary *)dataArr {
  //1
    
-    UIView *firstVeiw = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 285)];
+    UIView *firstVeiw = [[UIView alloc] init];
     firstVeiw.backgroundColor = [UIColor whiteColor];
     
     
@@ -147,6 +147,9 @@
     NSLog(@"SHLLabel height:%d", descHeight);
     descPriceLabel.frame = CGRectMake(10.f, 15, ScreenWidth - 20, descHeight);
     NSLog(@"%d",descHeight - 32);
+    
+    
+    firstVeiw.frame = CGRectMake(0, 0, ScreenWidth, 285 + descHeight - 15);
     
     [firstVeiw addSubview:descPriceLabel];
     
