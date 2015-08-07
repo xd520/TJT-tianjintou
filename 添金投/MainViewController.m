@@ -2152,6 +2152,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
                 [self recivedCategoryListFirst:dataArray];
                 
             }
+            
         }else if (tag==kBusinessTagGetJRcarouselImgUrl ) {
              NSMutableArray *dataArray = [jsonDic objectForKey:@"object"];
             if ([[jsonDic objectForKey:@"success"] boolValue] == NO) {
